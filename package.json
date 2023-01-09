@@ -2,8 +2,6 @@
   "name": "typeracer_",
   "version": "1.0.0",
   "scripts": {
-    "start": "npx nodemon --watch server server/index.js",
-    "dev": "npx webpack --watch",
     "start-dev": "npx nodemon --watch server server/index.js & npx webpack --watch",
     "test": "jest --silent",
     "test-watch": "jest --watchAll --silent"
@@ -19,7 +17,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
-    "react-router-dom": "^6.4.5"
+    "react-router-dom": "^6.4.5",
+    "mongoose": "^6.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
