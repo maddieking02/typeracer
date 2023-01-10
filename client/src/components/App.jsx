@@ -16,7 +16,7 @@ const App = () => {
     } if (render === 'home') {
       return (
         <div>
-          <Home />
+          <Home setRender={setRender} />
         </div>
       );
     } if (render === 'race') {

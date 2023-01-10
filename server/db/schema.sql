@@ -9,8 +9,8 @@ CREATE TABLE challenges (
 );
 
 -- LOAD reviews csv
-COPY challenges
-FROM '/Users/madelineking/hack-reactor/rfp2210/rfp2210-mvp/typeracer_prompts.csv'
+\copy challenges
+FROM '/Users/madelineking/hack-reactor/rfp2210/rfp2210-mvp/typeracer_challenges.csv'
 DELIMITER ','
 CSV HEADER;
 

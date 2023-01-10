@@ -5,15 +5,20 @@
     "start": "npx nodemon --watch server server/server.js",
     "start-dev": "npx nodemon --watch server server/server.js & npx webpack --watch",
     "test": "jest --silent",
-    "test-watch": "jest --watchAll --silent"
+    "test-watch": "jest --watchAll --silent",
+    "build-css": "npx tailwindcss -i ./client/src/assets/styles.css -o ./client/dist/styles.css --watch"
   },
   "author": "Madeline King",
   "dependencies": {
+    "@socket.io/cluster-adapter": "^0.2.1",
+    "@socket.io/sticky": "^1.0.2",
     "axios": "^1.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "install": "^0.13.0",
     "morgan": "^1.10.0",
+    "npm": "^9.2.0",
     "path": "^0.12.7",
     "pg": "^8.8.0",
     "pg-promise": "^11.0.2",
@@ -46,6 +51,7 @@
     "nodemon": "^2.0.20",
     "react-test-renderer": "^18.2.0",
     "style-loader": "^3.3.1",
+    "tailwindcss": "^3.2.4",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
     "webpack-dev-server": "^4.11.1"
