@@ -4,7 +4,7 @@ import Home from './Home.jsx';
 import Race from './Race.jsx';
 
 const App = () => {
-  const [render, setRender] = useState('race');
+  const [render, setRender] = useState('home');
 
   const renderPage = () => {
     if (render === 'login') {
