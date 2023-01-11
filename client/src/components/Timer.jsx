@@ -5,23 +5,35 @@ const Timer = () => {
   const [timer, setTimer] = useState('');
 
   useEffect(() => {
+    // socket.on('timer', data => {
+    //   setTimer(data.counter);
+    // });
+    // socket.on('done', () => {
+    //   socket.removeListener('timer');
+    // });
+    console.log('useEffect timer', timer);
+  }, [timer]);
+
+  const handleStart = () => {
     socket.on('timer', data => {
       setTimer(data.counter);
     });
     socket.on('done', () => {
       socket.removeListener('timer');
     });
-  }, [timer]);
+  };
 
   return (
     <div>
-      {timer !== 0 ? (
+      <button type="button" onClick={() => { handleStart(); }}>Start Game</button>
+      {timer !== 0 && timer !== '' ? (
         <h1>
           Starting in...
           {' '}
           {timer}
         </h1>
-      ) : <h1>Start</h1>}
+      ) : null}
+      {timer === 0 ? <h1>Another timer?</h1> : null}
     </div>
   );
 };

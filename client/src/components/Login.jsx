@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import socket from '../socketConfig.js';
 
 const Login = () => {
@@ -32,19 +34,26 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>typeracer_</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input type="text" name="username" onChange={handleChange} />
-        <label>Password</label>
-        <input type="text" name="password" onChange={handleChange} />
-        <button type="submit">Login</button>
-      </form>
+    <div className="bg">
+      <div className="star-field">
+        <div className="layer" />
+        <div className="layer" />
+        <h1 id="header">typeracer_</h1>
+        <form onSubmit={handleSubmit}>
+          <label>Username</label>
+          <input type="text" name="username" onChange={handleChange} />
+          <label>Password</label>
+          <input type="text" name="password" onChange={handleChange} />
+          <button type="submit">Login</button>
+        </form>
 
-      <button type="button" name="guest" value="guest" onClick={(e) => { routeChange(e); }}>PLAY AS GUEST</button>
-      <button type="button" name="newUser" onClick={(e) => { routeChange(e); }}>CREATE AN ACCOUNT</button>
+        <Stack spacing={2} direction="row">
+          <Button variant="outlined" type="button" name="guest" value="guest" onClick={(e) => { routeChange(e); }}>PLAY AS GUEST</Button>
+          <Button variant="outlined" type="button" name="newUser" onClick={(e) => { routeChange(e); }}>CREATE AN ACCOUNT</Button>
+        </Stack>
+      </div>
     </div>
+
   );
 };
 
