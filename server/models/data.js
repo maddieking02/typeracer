@@ -1,4 +1,4 @@
-const db = require('../db/index.js');
+const db = require('../db/pgdb.js');
 
 module.exports = {
   get: (callback, data) => {

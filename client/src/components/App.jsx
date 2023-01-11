@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Router, Route, Routes } from 'react-router-dom';
-import history from './history';
 import Login from './Login.jsx';
 import Home from './Home.jsx';
 import Race from './Race.jsx';

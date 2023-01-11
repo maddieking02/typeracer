@@ -10,7 +10,8 @@ const sendPage = (req, res) => {
 
 router.get('/login', sendPage);
 router.get('/home', sendPage);
-// router.get('/play', data.get);
+router.get('/race', sendPage);
+router.get('/play', data.get);
 // router.get('/play/:id', data.getId);
 // router.post('/play', data.post);
 // router.post('/play/:id', data.postId);

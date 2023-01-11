@@ -25,6 +25,7 @@ const Race = () => {
 
   return (
     <div>
+      <h1>typeracer_</h1>
       {challenge !== undefined ? <div>{`${challenge}`}</div> : null}
       {language !== undefined ? <div>{`${language}`}</div> : null}
       {solution !== undefined ? <div>{`${solution}`}</div> : null}
