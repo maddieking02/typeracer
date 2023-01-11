@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import socket from '../socketConfig.js';
 
 const Login = () => {
   const [user, setUser] = useState('');
@@ -7,6 +8,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    socket.on('test', msg => {
+      console.log(msg);
+    });
+
     if (user.length > 0 && path.length > 0) {
       navigate(`${path}`, { state: { user, path } }); // cannot pass function?
     }

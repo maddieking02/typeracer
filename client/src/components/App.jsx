@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Router, Route, Routes } from 'react-router-dom';
 import Login from './Login.jsx';
 import Home from './Home.jsx';
-import Race from './Race.jsx';
+import Race from './TypeRacer.jsx';
 
 const App = () => {
   // const [render, setRender] = useState('home');

@@ -5,7 +5,8 @@ import { createBrowserHistory } from 'history';
 import App from './components/App.jsx';
 import Login from './components/Login.jsx';
 import Home from './components/Home.jsx';
-import Race from './components/Race.jsx';
+import TypeRacer from './components/TypeRacer.jsx';
+
 const history = createBrowserHistory();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,7 +17,7 @@ root.render(
       {/* <Route path="/" element={<App />} /> */}
       <Route path="/login" element={<Login />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/race" element={<Race />} />
+      <Route path="/race" element={<TypeRacer />} />
     </Routes>
   </BrowserRouter>,
 );

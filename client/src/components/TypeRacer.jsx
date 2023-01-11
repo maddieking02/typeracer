@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
-const Race = () => {
+const TypeRacer = () => {
   const location = useLocation();
   const [challenge, setChallenge] = useState('');
   const [language, setLanguage] = useState('');
@@ -48,4 +48,4 @@ const Race = () => {
   );
 };
 
-export default Race;
+export default TypeRacer;

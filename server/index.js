@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
+const socketio = require('socket.io');
 const router = require('./router.js');
 
 const app = express();
@@ -21,7 +22,23 @@ const PORT = process.env.PORT || 3000;
 // app.listen(app.get('port'), () => {
 //   console.log(`Listening on http://localhost:${app.get('port')}`);
 // });
-app.listen(process.env.PORT);
+const io = socketio(app.listen(process.env.PORT));
+io.on('connection', socket => {
+
+  // socket.on('timer', async () => {
+  //   let count = 5;
+  //   const startTimer = setInterval(async () => {
+  //     if (count >= 0) {
+  //       io.emit('timer', { count, msg: 'Starting Game' });
+  //       count -= 1;
+  //     }
+  //   });
+  // });
+
+  socket.emit('test', 'this is from the server');
+});
+
+// app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);
 
 module.exports = app;
