@@ -1,6 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const [user, setUser] = useState('');
+  const [path, setPath] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.length > 0 && path.length > 0) {
+      navigate(`${path}`, { state: { user, path } }); // cannot pass function?
+    }
+  }, [user, path]);
+
+  const routeChange = (e) => {
+    console.log(e.target.name);
+    setUser(e.target.name);
+    setPath(e.target.name === 'guest' ? '/home' : '/create/account');
+  };
 
   const handleChange = () => {
 
@@ -21,8 +37,8 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
 
-      <button type="submit">PLAY AS GUEST</button>
-      <button type="submit">CREATE AN ACCOUNT</button>
+      <button type="button" name="guest" value="guest" onClick={(e) => { routeChange(e); }}>PLAY AS GUEST</button>
+      <button type="button" name="newUser" onClick={(e) => { routeChange(e); }}>CREATE AN ACCOUNT</button>
     </div>
   );
 };
