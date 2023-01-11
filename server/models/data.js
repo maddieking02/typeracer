@@ -1,4 +1,4 @@
-const db = require('../db/db.js');
+const db = require('../db/index.js');
 
 module.exports = {
   get: (callback, data) => {

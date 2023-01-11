@@ -12,6 +12,7 @@ const Login = () => {
 
   return (
     <div>
+      <h1>typeracer_</h1>
       <form onSubmit={handleSubmit}>
         <label>Username</label>
         <input type="text" name="username" onChange={handleChange} />

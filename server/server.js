@@ -30,9 +30,9 @@ if (cluster.isMaster) {
   });
 } else {
   // app.listen(app.get('port'), () => { console.log(`Worker ${process.pid} listening on http://localhost:${app.get('port')}`); });
-  console.log(`Worker ${process.pid} started`);
+  console.log(`Worker ${process.pid} listening on http://localhost:${app.get('port')}`);
 
-  const server = app.listen();
+  const server = app.listen(app.get('port'));
   const io = new Server(server);
 
   // use the cluster adapter
