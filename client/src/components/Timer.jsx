@@ -2,26 +2,26 @@ import React, { useState, useEffect } from 'react';
 import socket from '../socketConfig.js';
 
 const Timer = () => {
-  const [timer, setTimer] = useState({
-    count: '',
-    msg: '',
-  });
+  const [timer, setTimer] = useState('');
 
   useEffect(() => {
     socket.on('timer', data => {
-      setTimer(data);
+      setTimer(data.counter);
     });
     socket.on('done', () => {
       socket.removeListener('timer');
     });
-  }, []);
-
-  const { count, msg } = timer;
+  }, [timer]);
 
   return (
     <div>
-      <h1>{count}</h1>
-      <h3>{msg}</h3>
+      {timer !== 0 ? (
+        <h1>
+          Starting in...
+          {' '}
+          {timer}
+        </h1>
+      ) : <h1>Start</h1>}
     </div>
   );
 };

@@ -31,9 +31,29 @@ io.on('connection', socket => {
   //     if (count >= 0) {
   //       io.emit('timer', { count, msg: 'Starting Game' });
   //       count -= 1;
+  //     } else {
+  //       clearInterval();
   //     }
   //   });
-  // });
+  // }, 1000);
+  // socket.emit('timer', async () => {
+  //   let count = 5;
+  //   const startTimer = setInterval(async () => {
+  //     if (count >= 0) {
+  //       socket.emit('timer', { count, msg: 'start game' });
+  //       count -= 1;
+  //     }
+  //   });
+  // }, 1000);
+  let counter = 10;
+  const countDown = setInterval(async () => {
+    if (counter >= 0) {
+      io.emit('timer', { counter });
+      counter -= 1;
+    } else {
+      clearInterval(countDown);
+    }
+  }, 1000);
 
   socket.emit('test', 'this is from the server');
 });

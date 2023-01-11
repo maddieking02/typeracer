@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import Timer from './Timer.jsx';
 
 const TypeRacer = () => {
   const location = useLocation();
@@ -38,7 +39,7 @@ const TypeRacer = () => {
         {user}
       </h2>
       <div>
-        <div>Timer</div>
+        <Timer />
         <div>WPM</div>
       </div>
       {challenge !== undefined ? <div>{`${challenge}`}</div> : null}
