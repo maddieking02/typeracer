@@ -13,7 +13,11 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'],
-    modules: ['src', 'node_modules']
+    modules: ['src', 'node_modules'],
+    fallback: {
+      fs: false,
+      os: false,
+    },
   },
   performance: {
     hints: false,
@@ -27,6 +31,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-transform-object-assign'],
           },
         },
       },
@@ -38,12 +43,16 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.js$/,
+        loader: 'webpack-remove-debug',
+      },
     ],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
+        PORT: JSON.stringify(process.env.PORT),
       },
     }),
     new CompressionPlugin({

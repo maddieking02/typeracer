@@ -2,14 +2,18 @@
   "name": "typeracer_",
   "version": "1.0.0",
   "scripts": {
-    "start": "npx nodemon --watch server server/server.js",
-    "start-dev": "npx nodemon --watch server server/server.js & npx webpack --watch",
+    "start": "npx nodemon --watch server server/index.js",
+    "start-dev": "npx nodemon --watch server server/index.js & npx webpack --watch",
     "test": "jest --silent",
     "test-watch": "jest --watchAll --silent",
     "build-css": "npx tailwindcss -i ./client/src/assets/styles.css -o ./client/dist/styles.css --watch"
   },
   "author": "Madeline King",
   "dependencies": {
+    "@babel/plugin-transform-object-assign": "^7.18.6",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.4",
     "@socket.io/cluster-adapter": "^0.2.1",
     "@socket.io/sticky": "^1.0.2",
     "axios": "^1.2.0",
@@ -28,7 +32,9 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.4.5",
-    "socket.io": "^4.5.4"
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4",
+    "webpack-remove-debug": "^0.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
@@ -53,10 +59,14 @@
     "nodemon": "^2.0.20",
     "react-test-renderer": "^18.2.0",
     "style-loader": "^3.3.1",
-    "tailwindcss": "^3.2.4",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
     "webpack-dev-server": "^4.11.1"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   },
   "eslintConfig": {
     "extends": [
