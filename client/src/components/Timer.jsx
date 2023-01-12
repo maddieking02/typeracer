@@ -9,12 +9,6 @@ const Timer = () => {
   console.log('help', helperObj);
 
   useEffect(() => {
-    // socket.on('timer', data => {
-    //   setTimer(data.counter);
-    // });
-    // socket.on('done', () => {
-    //   socket.removeListener('timer');
-    // });
     console.log('useEffect timer', timer);
     console.log('useEffect remaining', remainingTime);
   }, [timer, remainingTime]);
@@ -47,19 +41,12 @@ const Timer = () => {
           {timer}
         </h1>
       ) : null}
-      {/* {timer === 0 && remainingTime !== 0 ? (
-        <h1>
-          Time Remaining
-          {' '}
-          {remainingTime}
-        </h1>
-      ) : null} */}
       {timer === 0 ? handleTimeRemaining() : null}
       {timer === 0 && remainingTime !== '' ? (
         <h1>
           Time Remaining
           {' '}
-          {remainingTime}
+          {helperObj.calculateTime(remainingTime)}
         </h1>
       ) : null}
     </div>
