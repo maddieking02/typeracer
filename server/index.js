@@ -55,6 +55,16 @@ io.on('connection', socket => {
     }
   }, 1000);
 
+  let totalTime = 60;
+  const remainingTime = setInterval(async () => {
+    if (totalTime >= 0) {
+      io.emit('remainingTime', { totalTime });
+      totalTime -= 1;
+    } else {
+      clearInterval(remainingTime);
+    }
+  }, 1000);
+
   socket.emit('test', 'this is from the server');
 });
 

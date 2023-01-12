@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import socket from '../socketConfig.js';
+import helperObj from '../helpers.js';
 
 const Timer = () => {
   const [timer, setTimer] = useState('');
+  const [remainingTime, setRemainingTime] = useState('');
+
+  console.log('help', helperObj);
 
   useEffect(() => {
     // socket.on('timer', data => {
@@ -12,7 +16,8 @@ const Timer = () => {
     //   socket.removeListener('timer');
     // });
     console.log('useEffect timer', timer);
-  }, [timer]);
+    console.log('useEffect remaining', remainingTime);
+  }, [timer, remainingTime]);
 
   const handleStart = () => {
     socket.on('timer', data => {
@@ -20,6 +25,15 @@ const Timer = () => {
     });
     socket.on('done', () => {
       socket.removeListener('timer');
+    });
+  };
+
+  const handleTimeRemaining = () => {
+    socket.on('remainingTime', data => {
+      setRemainingTime(data.totalTime);
+    });
+    socket.on('done', () => {
+      socket.removeListener('remainingTime');
     });
   };
 
@@ -33,7 +47,21 @@ const Timer = () => {
           {timer}
         </h1>
       ) : null}
-      {timer === 0 ? <h1>Another timer?</h1> : null}
+      {/* {timer === 0 && remainingTime !== 0 ? (
+        <h1>
+          Time Remaining
+          {' '}
+          {remainingTime}
+        </h1>
+      ) : null} */}
+      {timer === 0 ? handleTimeRemaining() : null}
+      {timer === 0 && remainingTime !== '' ? (
+        <h1>
+          Time Remaining
+          {' '}
+          {remainingTime}
+        </h1>
+      ) : null}
     </div>
   );
 };
