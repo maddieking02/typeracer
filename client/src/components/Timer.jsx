@@ -33,13 +33,13 @@ const Timer = ({
   // --react refactor
   const handleStart = () => {
     if (timer === null) {
-      setTimer(10);
+      setTimer(5);
     }
     if (timer > 0) {
       setTimeout(() => setTimer(timer - 1), 1000);
     }
     if (timer === 0) {
-      setRemainingTime(10);
+      setRemainingTime(15);
     }
   };
 

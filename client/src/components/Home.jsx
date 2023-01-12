@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/typeracer-logo.png';
+import Sidebar from './Sidebar.jsx';
+import { HiOutlineDotsVertical } from "react-icons/hi";
+
 
 const Home = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   console.log('user value', location.state.user, 'avg value', location.state.avgWpm);
 
@@ -23,6 +27,10 @@ const Home = () => {
     }, 0)
   }
 
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  }
+
   return (
     <div className="bg home-container">
       <div className="star-field home-inner-container">
@@ -38,7 +46,12 @@ const Home = () => {
             </h1>
             <h4>WPM {calculateAvgWpm(location.state.avgWpm) / location.state.avgWpm.length}</h4>
           </div>} */}
-          <h1 id="header">{user}</h1>
+
+          <h1 id="sidebar-container">
+            <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1>
+            {/* <HiOutlineDotsVertical onClick={() => {toggleSidebar()}}></HiOutlineDotsVertical> */}
+          </h1>
+          <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
         </div>
         <h2>Welcome {user}</h2>
         <img id="home-logo" src={logo} alt="" />
