@@ -250,6 +250,12 @@ html, body {
   align-items: center;
 }
 
+#timer-wpm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #challenge-container {
   font-weight: 400;
   font-size: 30px;
@@ -266,4 +272,21 @@ html, body {
   color: white;
   margin: 1.5em;
   font-size: 32.5px;
+}
+
+/* --timer */
+#timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-btn {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  padding: 0.5em;
+  margin: 1em;
+  height: fit-content;
+  width: fit-content;
 }

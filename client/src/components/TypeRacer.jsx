@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -13,7 +14,12 @@ const TypeRacer = () => {
   const [typed, setTyped] = useState('');
   const [userInput, setUserInput] = useState('');
   const [readOnly, setReadOnly] = useState(false);
+  const [wpm, setWpm] = useState(0);
+  const [endTime, setEndTime] = useState(false);
   const textInput = useRef(null);
+  // --timer states
+  const [timer, setTimer] = useState(null);
+  const [remainingTime, setRemainingTime] = useState(null);
 
   console.log('i cwant to cry', location.state.user);
 
@@ -109,19 +115,28 @@ const TypeRacer = () => {
             {user}
           </h1>
         </div>
-        <div>
-          <Timer />
-          <div>WPM</div>
+        <div id="timer-wpm-container">
+          <Timer timer={timer} setTimer={setTimer} remainingTime={remainingTime} setRemainingTime={setRemainingTime} />
+          <div>
+            WPM
+            {' '}
+            {wpm}
+          </div>
         </div>
         <div id="challenge-container">
           {challenge !== undefined ? <div>{`Title: ${challenge}`}</div> : null}
           {language !== undefined ? <div style={{ marginBottom: '1.5em' }}>{`Language: ${language}`}</div> : null}
-          {typed !== undefined && toBeTyped !== undefined ? <div style={{ border: '3px solid rgba(255, 255, 255, 0.35)', padding: '1em' }}><span style={{ color: 'cyan' }}>{`${typed}`}</span>{`${toBeTyped}`}</div> : null}
+          {typed !== undefined && toBeTyped !== undefined ? (
+            <div style={{ border: '3px solid rgba(255, 255, 255, 0.35)', padding: '1em' }}>
+              <span style={{ color: 'cyan' }}>{`${typed}`}</span>
+              {`${toBeTyped}`}
+            </div>
+          ) : null}
         </div>
 
         <form>
           <div>
-            <input id="typeracer-input" type="text" onChange={(e) => { handleFormChange(e); }} value={userInput} ref={textInput} />
+            <input id="typeracer-input" type="text" disabled={typeof remainingTime === 'object' || remainingTime === 0 ? true : false} onChange={(e) => { handleFormChange(e); }} value={userInput} ref={textInput} />
           </div>
         </form>
 

@@ -35,7 +35,7 @@ io.on('connection', socket => {
     }
   }, 1000);
 
-  let totalTime = 60;
+  let totalTime = 70;
   const remainingTime = setInterval(async () => {
     if (totalTime >= 0) {
       io.emit('remainingTime', { totalTime });
