@@ -34,7 +34,8 @@ time, mark, audio, video {
 
 html, body {
   background-color: rgb(16, 16, 16);
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 300;
   font-size: 26px;
   color: #fff;
 }

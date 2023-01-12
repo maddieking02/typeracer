@@ -10,9 +10,9 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    socket.on('test', msg => {
-      console.log(msg);
-    });
+    // socket.on('disconnect', () => {
+    //   console.log('socket has been disconnected');
+    // });
 
     if (user.length > 0 && path.length > 0) {
       navigate(`${path}`, { state: { user, path } }); // cannot pass function?

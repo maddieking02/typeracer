@@ -24,33 +24,13 @@ const PORT = process.env.PORT || 3000;
 // });
 const io = socketio(app.listen(process.env.PORT));
 io.on('connection', socket => {
-
-  // socket.on('timer', async () => {
-  //   let count = 5;
-  //   const startTimer = setInterval(async () => {
-  //     if (count >= 0) {
-  //       io.emit('timer', { count, msg: 'Starting Game' });
-  //       count -= 1;
-  //     } else {
-  //       clearInterval();
-  //     }
-  //   });
-  // }, 1000);
-  // socket.emit('timer', async () => {
-  //   let count = 5;
-  //   const startTimer = setInterval(async () => {
-  //     if (count >= 0) {
-  //       socket.emit('timer', { count, msg: 'start game' });
-  //       count -= 1;
-  //     }
-  //   });
-  // }, 1000);
   let counter = 10;
   const countDown = setInterval(async () => {
     if (counter >= 0) {
       io.emit('timer', { counter });
       counter -= 1;
     } else {
+      // io.emit('done');
       clearInterval(countDown);
     }
   }, 1000);
@@ -61,11 +41,16 @@ io.on('connection', socket => {
       io.emit('remainingTime', { totalTime });
       totalTime -= 1;
     } else {
+      // io.emit('done');
       clearInterval(remainingTime);
     }
   }, 1000);
 
-  socket.emit('test', 'this is from the server');
+  // socket.emit('test', 'this is from the server');
+});
+
+io.on('disconnect', socket => {
+  socket.removeAllListeners();
 });
 
 // app.listen(process.env.PORT);

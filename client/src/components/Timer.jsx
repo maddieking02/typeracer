@@ -6,8 +6,6 @@ const Timer = () => {
   const [timer, setTimer] = useState('');
   const [remainingTime, setRemainingTime] = useState('');
 
-  console.log('help', helperObj);
-
   useEffect(() => {
     console.log('useEffect timer', timer);
     console.log('useEffect remaining', remainingTime);
