@@ -21,7 +21,14 @@ const Home = () => {
       <div className="star-field home-inner-container">
         <div className="layer" />
         <div className="layer" />
-        <h1 id="header">typeracer_</h1>
+        <div className="header-container">
+          <h1 id="header">
+            typeracer_
+          </h1>
+          <h1 id="header">
+            {user}
+          </h1>
+        </div>
         <h2>Welcome {user}</h2>
         <img id="home-logo" src={logo} alt="" />
         <h1 id="slogan">A typeracing game for programmers.</h1>

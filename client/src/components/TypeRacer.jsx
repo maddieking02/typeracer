@@ -97,33 +97,31 @@ const TypeRacer = () => {
   }, []);
 
   return (
-    <div className="bg">
-      <div className="star-field">
+    <div className="bg typeracer-container">
+      <div className="star-field typeracer-inner-container">
         <div className="layer" />
         <div className="layer" />
-        <h1 id="header">
-          typeracer_
-          {' '}
-          {user}
-        </h1>
-        {/* <h2>
-          Welcome
-          {' '}
-          {user}
-        </h2> */}
+        <div className="header-container">
+          <h1 id="header">
+            typeracer_
+          </h1>
+          <h1 id="header">
+            {user}
+          </h1>
+        </div>
         <div>
           <Timer />
           <div>WPM</div>
         </div>
         <div id="challenge-container">
           {challenge !== undefined ? <div>{`Title: ${challenge}`}</div> : null}
-          {language !== undefined ? <div>{`Language: ${language}`}</div> : null}
-          {typed !== undefined && toBeTyped !== undefined ? <div><span style={{ color: 'cyan' }}>{`${typed}`}</span>{`${toBeTyped}`}</div> : null}
+          {language !== undefined ? <div style={{ marginBottom: '1.5em' }}>{`Language: ${language}`}</div> : null}
+          {typed !== undefined && toBeTyped !== undefined ? <div style={{ border: '3px solid rgba(255, 255, 255, 0.35)', padding: '1em' }}><span style={{ color: 'cyan' }}>{`${typed}`}</span>{`${toBeTyped}`}</div> : null}
         </div>
 
         <form>
           <div>
-            <input type="text" onChange={(e) => { handleFormChange(e); }} value={userInput} ref={textInput} />
+            <input id="typeracer-input" type="text" onChange={(e) => { handleFormChange(e); }} value={userInput} ref={textInput} />
           </div>
         </form>
 

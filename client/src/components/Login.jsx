@@ -38,7 +38,14 @@ const Login = () => {
       <div className="star-field">
         <div className="layer" />
         <div className="layer" />
-        <h1 id="header">typeracer_</h1>
+        <div className="header-container">
+          <h1 id="header">
+            typeracer_
+          </h1>
+          <h1 id="header">
+            {}
+          </h1>
+        </div>
         <form onSubmit={handleSubmit}>
           <label>Username</label>
           <input type="text" name="username" onChange={handleChange} />
