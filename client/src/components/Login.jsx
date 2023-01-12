@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+// import Stack from '@mui/material/Stack';
+// import Button from '@mui/material/Button';
 import socket from '../socketConfig.js';
 
 const Login = () => {
@@ -34,8 +34,8 @@ const Login = () => {
   };
 
   return (
-    <div className="bg">
-      <div className="star-field">
+    <div className="bg login-container">
+      <div className="star-field login-inner-container">
         <div className="layer" />
         <div className="layer" />
         <div className="header-container">
@@ -46,18 +46,19 @@ const Login = () => {
             {}
           </h1>
         </div>
-        <form onSubmit={handleSubmit}>
-          <label>Username</label>
-          <input type="text" name="username" onChange={handleChange} />
-          <label>Password</label>
-          <input type="text" name="password" onChange={handleChange} />
-          <button type="submit">Login</button>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <label id="login-label">Username</label>
+          <input id="login-input" type="text" name="username" onChange={handleChange} />
+          <label id="login-label">Password</label>
+          <input id="login-input" type="text" name="password" onChange={handleChange} />
+          <button className="btn1 login-btn1" type="submit">Login</button>
         </form>
 
-        <Stack spacing={2} direction="row">
-          <Button variant="outlined" type="button" name="guest" value="guest" onClick={(e) => { routeChange(e); }}>PLAY AS GUEST</Button>
-          <Button variant="outlined" type="button" name="newUser" onClick={(e) => { routeChange(e); }}>CREATE AN ACCOUNT</Button>
-        </Stack>
+        <div id="login-btn-container">
+          <button className="btn1 login-btn1" type="button" name="guest" value="guest" onClick={(e) => { routeChange(e); }}>PLAY AS GUEST</button>
+          <button className="btn1 login-btn1" type="button" name="newUser" onClick={(e) => { routeChange(e); }}>CREATE AN ACCOUNT</button>
+        </div>
+
       </div>
     </div>
 

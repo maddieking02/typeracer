@@ -178,6 +178,51 @@ html, body {
   animation: sf-fly-by-3 20s linear infinite;
 }
 
+/* --login */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5em;
+  margin: 5em 1em 1em 1em;
+  border: 2px solid whitesmoke;
+}
+
+#login-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size: 26px;
+}
+
+#login-input {
+  background-color: #000;
+  color: white;
+  margin: 0.5em 0 1.5em 0;
+  font-size: 28px;
+}
+
+#login-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-btn1 {
+  height: fit-content;
+}
+
 /* --home */
 .home-container {
   display: flex;
