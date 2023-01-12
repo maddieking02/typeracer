@@ -6,7 +6,9 @@ const CreateAccount = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { firstname, lastname, email, newuser, newpassword } = e.target;
+    const {
+      firstname, lastname, email, newuser, newpassword,
+    } = e.target;
 
     console.log(firstname.value, lastname.value, email.value, newuser.value, newpassword.value);
 
@@ -28,24 +30,37 @@ const CreateAccount = () => {
   };
 
   return (
-    <div>
-      <form className="account-form" onSubmit={handleSubmit}>
-        <label id="account-label">First Name</label>
-        <input id="account-input" type="text" name="firstname" />
-        <label id="account-label">Last Name</label>
-        <input id="account-input" type="text" name="lastname" />
+    <div className="bg create-acc-container">
+      <div className="star-field create-acc-inner-container">
+        <div className="layer" />
+        <div className="layer" />
+        <div className="header-container">
+          <h1 id="header">
+            typeracer_
+          </h1>
+          <h1 id="header">
+            {}
+          </h1>
+        </div>
+        <form className="account-form" onSubmit={handleSubmit}>
+          <label id="account-label">First Name</label>
+          <input id="account-input" type="text" name="firstname" />
+          <label id="account-label">Last Name</label>
+          <input id="account-input" type="text" name="lastname" />
 
-        <label id="account-label">Email</label>
-        <input id="account-input" type="text" name="email" />
+          <label id="account-label">Email</label>
+          <input id="account-input" type="text" name="email" />
 
-        <label id="account-label">Create a username</label>
-        <input id="account-input" type="text" name="newuser" />
+          <label id="account-label">Create a username</label>
+          <input id="account-input" type="text" name="newuser" />
 
-        <label id="account-label">Create a password</label>
-        <input id="account-input" type="text" name="newpassword" />
+          <label id="account-label">Create a password</label>
+          <input id="account-input" type="text" name="newpassword" />
 
-        <button className="btn1 account-btn1" type="submit">CREATE ACCOUNT</button>
-      </form>
+          <button className="btn1 account-btn1" type="submit">CREATE ACCOUNT</button>
+        </form>
+
+      </div>
     </div>
   );
 };

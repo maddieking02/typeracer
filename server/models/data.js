@@ -11,7 +11,7 @@ module.exports = {
   },
   getUserData: (callback, { username, password }) => {
     // console.log('models userdata', username, password);
-    db.query(`SELECT * FROM users WHERE username=${username} AND password=${password}`, (err, res) => {
+    db.query(`SELECT * FROM users WHERE username='${username}' AND password='${password}'`, (err, res) => {
       callback(err, res.rows);
     });
   },

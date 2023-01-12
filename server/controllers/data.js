@@ -16,8 +16,10 @@ module.exports = {
     // console.log('req inside getUserData', req.query);
     models.getUserData((err, data) => {
       if (err) {
+        console.log('error inside getUserData', err);
         res.status(404).send();
       } else {
+        console.log('success inside getUserData', data);
         res.status(200).send(data);
       }
     }, req.query);

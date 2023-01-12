@@ -8,6 +8,7 @@ import socket from '../socketConfig.js';
 const Login = () => {
   const [user, setUser] = useState('');
   const [path, setPath] = useState('');
+  const [avgWpm, setAvgWpm] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,9 +16,9 @@ const Login = () => {
     //   console.log('socket has been disconnected');
     // });
     if (user.length > 0 && path.length > 0) {
-      navigate(`${path}`, { state: { user, path } }); // cannot pass function?
+      navigate(`${path}`, { state: { user, path, avgWpm } }); // cannot pass function?
     }
-  }, [user, path]);
+  }, [user, path, avgWpm]);
 
   const routeChange = (e) => {
     console.log(e.target.name);
@@ -40,6 +41,11 @@ const Login = () => {
     axios.get(`/home/${username.value}`, { params: userInfo })
       .then(res => {
         console.log('success inside axios get user', res.data);
+        setUser(res.data[0].username);
+        setPath('/home');
+        setAvgWpm(res.data[0].wpm);
+        // console.log(res.data);
+        // console.log(res.data[0].username, '/home', res.data[0].wpm);
       })
       .catch(err => {
         console.log('error inside axios get user', err);

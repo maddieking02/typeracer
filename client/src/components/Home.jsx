@@ -4,7 +4,7 @@ import logo from '../assets/typeracer-logo.png';
 
 const Home = () => {
   const location = useLocation();
-  console.log('user value', location.state.user);
+  console.log('user value', location.state.user, 'avg value', location.state.avgWpm);
 
   const navigate = useNavigate();
   const routeChange = (e) => {
@@ -16,6 +16,13 @@ const Home = () => {
   // this is being rendered each time SIGH bug fix
   const user = location.state.user === 'guest' ? (location.state.user.charAt(0).toUpperCase() + location.state.user.slice(1)) + JSON.stringify(Math.floor(Math.random() * 100) + 1) : location.state.user;
 
+  const calculateAvgWpm = (arr) => {
+    return arr.reduce((acc, num) => {
+      acc += num;
+      return acc;
+    }, 0)
+  }
+
   return (
     <div className="bg home-container">
       <div className="star-field home-inner-container">
@@ -25,9 +32,13 @@ const Home = () => {
           <h1 id="header">
             typeracer_
           </h1>
-          <h1 id="header">
-            {user}
-          </h1>
+          {/* {location.state.avgWpm.length === 0 ? <h1 id="header">{user}</h1> : <div className="header-wpm">
+            <h1 id="header-wpm-v">
+              {user}
+            </h1>
+            <h4>WPM {calculateAvgWpm(location.state.avgWpm) / location.state.avgWpm.length}</h4>
+          </div>} */}
+          <h1 id="header">{user}</h1>
         </div>
         <h2>Welcome {user}</h2>
         <img id="home-logo" src={logo} alt="" />
