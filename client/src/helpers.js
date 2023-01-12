@@ -4,14 +4,14 @@ const calculateTime = (time) => {
   return `${min}:${sec < 10 ? "0" + sec : sec}`;
 };
 
-const calculateWPM = (endTime, startTime, player) => {
-  const numOfWords = player.currentWordIndex;
-  const timeInSec = (endTime - startTime) / 1000;
-  const timeInMin = timeInSec / 60;
-  const WPM = Math.floor(numOfWords / timeInMin);
+const calculateWPM = (chars) => {
+  console.log('inside calculateWPM', chars);
+  const WPM = Math.floor((chars / 5) / 1);
   return WPM;
 };
 
 module.exports = {
   calculateTime, calculateWPM,
 };
+
+// Gross WPM is (typed characters / 5) / 1 minute

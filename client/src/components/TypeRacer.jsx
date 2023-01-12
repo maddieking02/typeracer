@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Timer from './Timer.jsx';
 import socket from '../socketConfig.js';
+import helperObj from '../helpers.js';
 
 const TypeRacer = () => {
   const location = useLocation();
@@ -13,9 +14,7 @@ const TypeRacer = () => {
   const [toBeTyped, setToBeTyped] = useState('');
   const [typed, setTyped] = useState('');
   const [userInput, setUserInput] = useState('');
-  const [readOnly, setReadOnly] = useState(false);
   const [wpm, setWpm] = useState(0);
-  const [endTime, setEndTime] = useState(false);
   const textInput = useRef(null);
   // --timer states
   const [timer, setTimer] = useState(null);
@@ -120,7 +119,7 @@ const TypeRacer = () => {
           <div>
             WPM
             {' '}
-            {wpm}
+            {typeof remainingTime === 'object' || remainingTime === 0 ? helperObj.calculateWPM(typed.split('').length) : 0}
           </div>
         </div>
         <div id="challenge-container">
