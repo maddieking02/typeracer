@@ -7,6 +7,7 @@ import Login from './components/Login.jsx';
 import Home from './components/Home.jsx';
 import './assets/styles.css';
 import TypeRacer from './components/TypeRacer.jsx';
+import CreateAccount from './components/CreateAccount.jsx';
 
 const history = createBrowserHistory();
 
@@ -19,6 +20,7 @@ root.render(
       <Route path="/login" element={<Login />} />
       <Route path="/home" element={<Home />} />
       <Route path="/race" element={<TypeRacer />} />
+      <Route path="/create/account" element={<CreateAccount />} />
     </Routes>
   </BrowserRouter>,
 );

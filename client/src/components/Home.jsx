@@ -32,9 +32,9 @@ const Home = () => {
         <h2>Welcome {user}</h2>
         <img id="home-logo" src={logo} alt="" />
         <h1 id="slogan">A typeracing game for programmers.</h1>
-        <button className="home-btn glow-on-hover" type="button" name="/game/create" onClick={(e) => {routeChange(e)}}>CREATE GAME ></button>
-        <button className="home-btn glow-on-hover" type="button" name="/game/join" onClick={(e) => {routeChange(e)}}>JOIN GAME ></button>
-        <button className="home-btn glow-on-hover" type="button" name="/race" onClick={(e) => {routeChange(e)}}>START RACING ></button>
+        <button className="home-btn glow-on-hover" type="button" name="/game/create" onClick={(e) => {routeChange(e)}}>CREATE GAME  ></button>
+        <button className="home-btn glow-on-hover" type="button" name="/game/join" onClick={(e) => {routeChange(e)}}>JOIN GAME  ></button>
+        <button className="home-btn glow-on-hover" type="button" name="/race" onClick={(e) => {routeChange(e)}}>START RACING  ></button>
       </div>
     </div>
   );

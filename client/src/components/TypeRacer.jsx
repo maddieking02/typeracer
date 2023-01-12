@@ -25,6 +25,9 @@ const TypeRacer = () => {
   const refreshPage = () => {
     navigate(0);
   };
+  const navHome = () => {
+    navigate('/home', { state: { user } });
+  };
 
   console.log('i cwant to cry', location.state.user);
 
@@ -113,7 +116,7 @@ const TypeRacer = () => {
         <div className="layer" />
         <div className="layer" />
         <div className="header-container">
-          <h1 id="header">
+          <h1 id="header" onClick={() => { navHome(); }}>
             typeracer_
           </h1>
           <h1 id="header">

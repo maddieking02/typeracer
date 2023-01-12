@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import Stack from '@mui/material/Stack';
 // import Button from '@mui/material/Button';
+import axios from 'axios';
 import socket from '../socketConfig.js';
 
 const Login = () => {
@@ -13,7 +14,6 @@ const Login = () => {
     // socket.on('disconnect', () => {
     //   console.log('socket has been disconnected');
     // });
-
     if (user.length > 0 && path.length > 0) {
       navigate(`${path}`, { state: { user, path } }); // cannot pass function?
     }
@@ -25,11 +25,25 @@ const Login = () => {
     setPath(e.target.name === 'guest' ? '/home' : '/create/account');
   };
 
-  const handleChange = () => {
+  // const handleChange = () => {
 
-  };
+  // };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { username, password } = e.target;
+    console.log('username', username.value, 'password', password.value);
+    const userInfo = {
+      username: username.value,
+      password: password.value,
+    };
+    axios.get(`/home/${username.value}`, { params: userInfo })
+      .then(res => {
+        console.log('success inside axios get user', res.data);
+      })
+      .catch(err => {
+        console.log('error inside axios get user', err);
+      });
 
   };
 
@@ -48,9 +62,9 @@ const Login = () => {
         </div>
         <form className="login-form" onSubmit={handleSubmit}>
           <label id="login-label">Username</label>
-          <input id="login-input" type="text" name="username" onChange={handleChange} />
+          <input id="login-input" type="text" name="username" />
           <label id="login-label">Password</label>
-          <input id="login-input" type="text" name="password" onChange={handleChange} />
+          <input id="login-input" type="text" name="password" />
           <button className="btn1 login-btn1" type="submit">Login</button>
         </form>
 

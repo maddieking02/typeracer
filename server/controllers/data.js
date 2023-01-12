@@ -1,8 +1,8 @@
 const models = require('../models/data.js');
 
 module.exports = {
-  get: (req, res) => {
-    models.get((err, data) => {
+  getChallenge: (req, res) => {
+    models.getChallenge((err, data) => {
       if (err) {
         console.log('error inside controllers GET');
         res.status(400).send();
@@ -12,14 +12,25 @@ module.exports = {
       }
     });
   },
-  post: (req, res) => {
-    models.post((err, data) => {
+  getUserData: (req, res) => {
+    // console.log('req inside getUserData', req.query);
+    models.getUserData((err, data) => {
       if (err) {
-        console.log('error inside controllers POST');
+        res.status(404).send();
+      } else {
+        res.status(200).send(data);
+      }
+    }, req.query);
+  },
+  postUserData: (req, res) => {
+    console.log('req body inside postData', req.body);
+    models.postUserData((err, data) => {
+      if (err) {
+        console.log('error inside controllers POST', err);
         res.status(400).send();
       } else {
         console.log('success inside controllers POST');
-        res.status(201).send(data);
+        res.status(201).send();
       }
     }, req.body);
   },
