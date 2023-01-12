@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FcRefresh } from 'react-icons/fc';
 import Timer from './Timer.jsx';
 import socket from '../socketConfig.js';
 import helperObj from '../helpers.js';
@@ -19,6 +20,11 @@ const TypeRacer = () => {
   // --timer states
   const [timer, setTimer] = useState(null);
   const [remainingTime, setRemainingTime] = useState(null);
+
+  const navigate = useNavigate();
+  const refreshPage = () => {
+    navigate(0);
+  };
 
   console.log('i cwant to cry', location.state.user);
 
@@ -114,9 +120,13 @@ const TypeRacer = () => {
             {user}
           </h1>
         </div>
+        <button type="button" className="btn1" onClick={() => { refreshPage(); }}>
+          <FcRefresh style={{ fontSize: '1em', marginRight: '0.5em' }} />
+          New Challenge
+        </button>
         <div id="timer-wpm-container">
           <Timer timer={timer} setTimer={setTimer} remainingTime={remainingTime} setRemainingTime={setRemainingTime} />
-          <div>
+          <div style={{ margin: '0.5em 0 1em 0' }}>
             WPM
             {' '}
             {typeof remainingTime === 'object' || remainingTime === 0 ? helperObj.calculateWPM(typed.split('').length) : 0}
@@ -135,7 +145,7 @@ const TypeRacer = () => {
 
         <form>
           <div>
-            <input id="typeracer-input" type="text" disabled={typeof remainingTime === 'object' || remainingTime === 0 ? true : false} onChange={(e) => { handleFormChange(e); }} value={userInput} ref={textInput} />
+            <input id="typeracer-input" type="text" disabled={!!(typeof remainingTime === 'object' || remainingTime === 0)} onChange={(e) => { handleFormChange(e); }} value={userInput} ref={textInput} />
           </div>
         </form>
 

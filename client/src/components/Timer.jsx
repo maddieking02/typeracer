@@ -63,7 +63,7 @@ const Timer = ({
 
   return (
     <div id="timer-container">
-      <button className="timer-btn" type="button" onClick={() => { handleStart(); }}>Start Game</button>
+      <button className="btn1" type="button" onClick={() => { handleStart(); }}>Start Game</button>
       {timer !== null && remainingTime === null ? (
         <h1>
           Starting in...
