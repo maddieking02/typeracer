@@ -30,9 +30,8 @@ const TypeRacer = () => {
   // STOPPING POINT >>>HERE<<<
   console.log('check redux state', rWpm, rUser);
   // post to store in database
-  dispatch(updateWPM(60));
+  dispatch(updateWPM(30));
   // refactor login GET to update redux state instead of react useState
-
 
   const navigate = useNavigate();
   const refreshPage = () => {
