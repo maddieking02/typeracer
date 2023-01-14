@@ -8,6 +8,8 @@ import Home from './components/Home.jsx';
 import './assets/styles.css';
 import TypeRacer from './components/TypeRacer.jsx';
 import CreateAccount from './components/CreateAccount.jsx';
+import Account from './components/Account.jsx';
+import Settings from './components/Settings.jsx';
 
 const history = createBrowserHistory();
 
@@ -21,6 +23,8 @@ root.render(
       <Route path="/home" element={<Home />} />
       <Route path="/race" element={<TypeRacer />} />
       <Route path="/create/account" element={<CreateAccount />} />
+      <Route path="/account" element={<Account />} />
+      <Route path="/settings" element={<Settings />} />
     </Routes>
   </BrowserRouter>,
 );

@@ -14,7 +14,7 @@ const Home = () => {
   const routeChange = (e) => {
     console.log(e.target.name)
     const path = e.target.name;
-    navigate(`${path}`, { state: { user } });
+    navigate(`${path}`, { state: { user, avgWpm: location.state.avgWpm } });
   }
 
   // this is being rendered each time SIGH bug fix
@@ -40,18 +40,18 @@ const Home = () => {
           <h1 id="header">
             typeracer_
           </h1>
-          {/* {location.state.avgWpm.length === 0 ? <h1 id="header">{user}</h1> : <div className="header-wpm">
+
+
+          <h1 id="sidebar-container">
+            {/* <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1> */}
+            {location.state.avgWpm.length === 0 ? <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1> : <div className="header-wpm" onClick={() => {toggleSidebar()}}>
             <h1 id="header-wpm-v">
               {user}
             </h1>
             <h4>WPM {calculateAvgWpm(location.state.avgWpm) / location.state.avgWpm.length}</h4>
-          </div>} */}
-
-          <h1 id="sidebar-container">
-            <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1>
-            {/* <HiOutlineDotsVertical onClick={() => {toggleSidebar()}}></HiOutlineDotsVertical> */}
+          </div>}
           </h1>
-          <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+          <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} user={user} />
         </div>
         <h2>Welcome {user}</h2>
         <img id="home-logo" src={logo} alt="" />

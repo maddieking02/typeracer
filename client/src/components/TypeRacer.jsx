@@ -26,7 +26,7 @@ const TypeRacer = () => {
     navigate(0);
   };
   const navHome = () => {
-    navigate('/home', { state: { user } });
+    navigate('/home', { state: { user, avgWpm: location.state.avgWpm } });
   };
 
   console.log('i cwant to cry', location.state.user);
@@ -76,19 +76,6 @@ const TypeRacer = () => {
   };
 
   const updateTyped = () => { // func to find typed words
-    // const typedWords = [];
-    // solution.split(' ').forEach(char => { // all words
-    //   // console.log('solution char', char);
-    //   toBeTyped.split(' ').forEach(futureChar => { // untyped words
-    //     if (char !== futureChar) {
-    //       // console.log('char', char, 'futureChar', futureChar, char === futureChar);
-    //       typedWords.push(char);
-    //     }
-    //     // console.log('future typed char', futureChar);
-    //   });
-    // });
-    // return typedWords;
-
     // compare two strings?
     // console.log('this is solution:::', solution);
     // console.log('next word toBeTyped:::', toBeTyped.split(' ')[0]);
@@ -110,19 +97,45 @@ const TypeRacer = () => {
     textInput.current.focus();
   }, []);
 
+  const calculateAvgWpm = (arr) => {
+    return arr.reduce((acc, num) => {
+      acc += num;
+      return acc;
+    }, 0);
+  };
+
   return (
     <div className="bg typeracer-container">
       <div className="star-field typeracer-inner-container">
         <div className="layer" />
         <div className="layer" />
+
         <div className="header-container">
           <h1 id="header" onClick={() => { navHome(); }}>
             typeracer_
           </h1>
-          <h1 id="header">
+          {/* <h1 id="header">
             {user}
+          </h1> */}
+          <h1 id="sidebar-container">
+            {/* <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1> */}
+            {location.state.avgWpm.length === 0 ? <h1 id="header">{user}</h1> : (
+              <div className="header-wpm">
+                <h1 id="header-wpm-v">
+                  {user}
+                </h1>
+                <h4>
+                  WPM
+                  {' '}
+                  {calculateAvgWpm(location.state.avgWpm) / location.state.avgWpm.length}
+                </h4>
+              </div>
+            )}
           </h1>
+
         </div>
+
+
         <button type="button" className="btn1" onClick={() => { refreshPage(); }}>
           <FcRefresh style={{ fontSize: '1em', marginRight: '0.5em' }} />
           New Challenge
