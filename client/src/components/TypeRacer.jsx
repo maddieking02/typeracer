@@ -1,11 +1,13 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { FcRefresh } from 'react-icons/fc';
 import Timer from './Timer.jsx';
 import socket from '../socketConfig.js';
 import helperObj from '../helpers.js';
+import { updateWPM, updateUser } from '../reducer.js';
 
 const TypeRacer = () => {
   const location = useLocation();
@@ -21,6 +23,17 @@ const TypeRacer = () => {
   const [timer, setTimer] = useState(null);
   const [remainingTime, setRemainingTime] = useState(null);
 
+  // --redux states
+  const { rWpm, rUser } = useSelector((state) => state.typeracer);
+  const dispatch = useDispatch();
+
+  // STOPPING POINT >>>HERE<<<
+  console.log('check redux state', rWpm, rUser);
+  // post to store in database
+  dispatch(updateWPM(60));
+  // refactor login GET to update redux state instead of react useState
+
+
   const navigate = useNavigate();
   const refreshPage = () => {
     navigate(0);
@@ -29,7 +42,7 @@ const TypeRacer = () => {
     navigate('/home', { state: { user, avgWpm: location.state.avgWpm } });
   };
 
-  console.log('i cwant to cry', location.state.user);
+  // console.log('i cwant to cry', location);
 
   const user = location.state.user === 'guest' ? (location.state.user.charAt(0).toUpperCase() + location.state.user.slice(1)) + JSON.stringify(Math.floor(Math.random() * 100) + 1) : location.state.user;
 
@@ -44,6 +57,13 @@ const TypeRacer = () => {
       })
       .catch(err => {
         console.log('error retrieving challege', err);
+      });
+  };
+
+  const postResults = () => {
+    axios.post('/play')
+      .then(res => {
+
       });
   };
 

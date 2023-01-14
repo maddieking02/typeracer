@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import logo from '../assets/typeracer-logo.png';
 import Sidebar from './Sidebar.jsx';
 import { HiOutlineDotsVertical } from "react-icons/hi";
@@ -33,6 +33,7 @@ const Home = () => {
 
   return (
     <div className="bg home-container">
+
       <div className="star-field home-inner-container">
         <div className="layer" />
         <div className="layer" />
@@ -40,7 +41,6 @@ const Home = () => {
           <h1 id="header">
             typeracer_
           </h1>
-
 
           <h1 id="sidebar-container">
             {/* <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1> */}
@@ -51,6 +51,7 @@ const Home = () => {
             <h4>WPM {calculateAvgWpm(location.state.avgWpm) / location.state.avgWpm.length}</h4>
           </div>}
           </h1>
+
           <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} user={user} />
         </div>
         <h2>Welcome {user}</h2>
