@@ -45,7 +45,7 @@ const Timer = ({
       setTimeout(() => setTimer(timer - 1), 1000);
     }
     if (timer === 0) {
-      setRemainingTime(15);
+      setRemainingTime(60);
     }
   };
 

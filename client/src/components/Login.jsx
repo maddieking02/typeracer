@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 // import Stack from '@mui/material/Stack';
 // import Button from '@mui/material/Button';
 import axios from 'axios';
-import { updateWPM, updateUser, updatePassword } from '../reducer.js';
+import {
+  updateFirstname, updateLastname, updateEmail, updateWPM, updateUser, updatePassword,
+} from '../reducer.js';
 import socket from '../socketConfig.js';
 
 const Login = () => {
@@ -50,6 +52,9 @@ const Login = () => {
         setUser(res.data[0].username);
         setPath('/home');
         setAvgWpm(res.data[0].wpm);
+        dispatch(updateFirstname(res.data[0].firstname));
+        dispatch(updateLastname(res.data[0].lastname));
+        dispatch(updateEmail(res.data[0].email));
         dispatch(updateUser(res.data[0].username));
         dispatch(updatePassword(res.data[0].password));
         dispatch(updateWPM(res.data[0].wpm));
@@ -77,7 +82,7 @@ const Login = () => {
           <label id="login-label">Username</label>
           <input id="login-input" type="text" name="username" />
           <label id="login-label">Password</label>
-          <input id="login-input" type="text" name="password" />
+          <input id="login-input" type="password" name="password" />
           <button className="btn1 login-btn1" type="submit">Login</button>
         </form>
 
