@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { updateWPM, updateUser, updatePassword } from '../reducer.js';
 import socket from '../socketConfig.js';
 import helperObj from '../helpers.js';
 
@@ -71,15 +72,23 @@ const Timer = ({
       // TO POST: need username & password..
       const newEntryWpm = helperObj.calculateWPM(typed.split('').length);
 
-      const userInfo = {
+      const userInfo1 = {
         username: userReducer,
         password: passwordReducer,
         avgWpm: avgWpmReducer,
         newEntry: newEntryWpm,
       };
-      axios.put(`/home/${userReducer}`, userInfo)
-        .then(res => {
-          console.log('success inside axios get user', res.data);
+      const userInfo2 = {
+        username: userReducer,
+        password: passwordReducer,
+      };
+      axios.put(`/home/${userReducer}`, userInfo1)
+        .then(postres => {
+          console.log('success inside axios get user', postres.data);
+          // axios.get(`/home/${userReducer}`, userInfo2)
+          //   .then(getres => {
+          //     dispatch(updateWPM(getres.data[0].wpm));
+          //   });
         })
         .catch(err => {
           console.log('err inside axios post user', err);

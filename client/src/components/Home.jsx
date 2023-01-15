@@ -48,10 +48,9 @@ const Home = () => {
             <h1 id="header-wpm-v">
               {user}
             </h1>
-            <h4>WPM {calculateAvgWpm(location.state.avgWpm) / location.state.avgWpm.length}</h4>
+            <h4>WPM {location.state.avgWpm.length === 1 ? 0 : Math.round(calculateAvgWpm(location.state.avgWpm.slice(1)) / (location.state.avgWpm.length - 1))}</h4>
           </div>}
           </h1>
-
           <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} user={user} />
         </div>
         <h2>Welcome {user}</h2>

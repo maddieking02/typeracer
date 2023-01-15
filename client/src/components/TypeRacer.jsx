@@ -147,7 +147,7 @@ const TypeRacer = () => {
                 <h4>
                   WPM
                   {' '}
-                  {calculateAvgWpm(location.state.avgWpm) / location.state.avgWpm.length}
+                  {location.state.avgWpm.length === 1 ? 0 : Math.round(calculateAvgWpm(location.state.avgWpm.slice(1)) / (location.state.avgWpm.length - 1))}
                 </h4>
               </div>
             )}
