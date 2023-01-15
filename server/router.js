@@ -15,6 +15,7 @@ router.get('/create/account', sendPage);
 router.post('/create/account', data.postUserData);
 router.get('/play', data.getChallenge);
 router.get('/home/:id', data.getUserData);
+router.put('/home/:id', data.updateUserData);
 router.get('/account', sendPage);
 router.get('/settings', sendPage);
 // router.post('/play', data.post);

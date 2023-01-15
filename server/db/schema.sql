@@ -22,7 +22,7 @@ CREATE TABLE users (
   firstname VARCHAR(50),
   lastname VARCHAR(50),
   email VARCHAR(100),
-  wpm json
+  wpm integer ARRAY
 );
 
 -- SELECT setval(pg_get_serial_sequence('reviews', 'id'), (SELECT MAX(id) FROM reviews)+1);

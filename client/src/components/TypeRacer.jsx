@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { FcRefresh } from 'react-icons/fc';
@@ -24,18 +24,19 @@ const TypeRacer = () => {
   const [remainingTime, setRemainingTime] = useState(null);
 
   // --redux states
-  const { rWpm, rUser } = useSelector((state) => state.typeracer);
-  const dispatch = useDispatch();
+  // const { rWpm, rUser } = useSelector((state) => state.typeracer);
+  // const dispatch = useDispatch();
 
   // STOPPING POINT >>>HERE<<<
-  console.log('check redux state', rWpm, rUser);
+  // console.log('check redux state', rWpm, rUser);
   // post to store in database
-  dispatch(updateWPM(30));
+  // dispatch(updateWPM(30));
   // refactor login GET to update redux state instead of react useState
 
   const navigate = useNavigate();
   const refreshPage = () => {
     navigate(0);
+    // get request and re-update reducer states
   };
   const navHome = () => {
     navigate('/home', { state: { user, avgWpm: location.state.avgWpm } });
@@ -109,7 +110,7 @@ const TypeRacer = () => {
 
   useEffect(() => {
     console.log('this should update each time a user submits an input', updateTyped());
-  }, [toBeTyped]);
+  }, [toBeTyped, typed]);
 
   useEffect(() => {
     getRandomChallenge();
@@ -160,11 +161,12 @@ const TypeRacer = () => {
           New Challenge
         </button>
         <div id="timer-wpm-container">
-          <Timer timer={timer} setTimer={setTimer} remainingTime={remainingTime} setRemainingTime={setRemainingTime} />
+          <Timer timer={timer} setTimer={setTimer} remainingTime={remainingTime} setRemainingTime={setRemainingTime} typed={typed} setWpm={setWpm} />
           <div style={{ margin: '0.5em 0 1em 0' }}>
             WPM
             {' '}
             {typeof remainingTime === 'object' || remainingTime === 0 ? helperObj.calculateWPM(typed.split('').length) : 0}
+            {console.log('NEED WPM TO UPDATE HERE PLS: ', wpm)}
           </div>
         </div>
         <div id="challenge-container">

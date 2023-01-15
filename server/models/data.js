@@ -19,7 +19,16 @@ module.exports = {
     firstname, lastname, email, newuser, newpassword,
   }) => {
     console.log('I am inside model POST: ');
-    db.query(`INSERT INTO users(username, password, firstname, lastname, email, wpm) VALUES ('${newuser}', '${newpassword}', '${firstname}', '${lastname}', '${email}', '${JSON.stringify([0])}')`, (err, res) => {
+    db.query(`INSERT INTO users(username, password, firstname, lastname, email, wpm) VALUES ('${newuser}', '${newpassword}', '${firstname}', '${lastname}', '${email}', ARRAY[0] )`, (err, res) => {
+      callback(err, res);
+    });
+  },
+  updateUserData: (callback, { username, password, avgWpm, newEntry }) => {
+    console.log('models UPDATE userdata', username, password, avgWpm, newEntry);
+
+    avgWpm.push(newEntry);
+
+    db.query(`UPDATE users SET wpm=ARRAY${JSON.stringify(avgWpm)} WHERE username='${username}' AND password='${password}'`, (err, res) => {
       callback(err, res);
     });
   },

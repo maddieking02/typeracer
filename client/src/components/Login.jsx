@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 // import Stack from '@mui/material/Stack';
 // import Button from '@mui/material/Button';
 import axios from 'axios';
+import { updateWPM, updateUser, updatePassword } from '../reducer.js';
 import socket from '../socketConfig.js';
 
 const Login = () => {
   const [user, setUser] = useState('');
   const [path, setPath] = useState('');
   const [avgWpm, setAvgWpm] = useState([]);
+  // --redux states
+  const { avgWpmReducer, userReducer, passwordReducer } = useSelector((state) => state.typeracer);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,8 +50,9 @@ const Login = () => {
         setUser(res.data[0].username);
         setPath('/home');
         setAvgWpm(res.data[0].wpm);
-        // console.log(res.data);
-        // console.log(res.data[0].username, '/home', res.data[0].wpm);
+        dispatch(updateUser(res.data[0].username));
+        dispatch(updatePassword(res.data[0].password));
+        dispatch(updateWPM(res.data[0].wpm));
       })
       .catch(err => {
         console.log('error inside axios get user', err);

@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  rWpm: 0,
-  rUser: '',
+  avgWpmReducer: 0,
+  userReducer: '',
+  passwordReducer: '',
 };
 
 const typeRacerSlice = createSlice({
@@ -10,14 +11,17 @@ const typeRacerSlice = createSlice({
   initialState,
   reducers: {
     updateWPM: (state, action) => {
-      state.rWpm = action.payload;
+      state.avgWpmReducer = action.payload;
     },
     updateUser: (state, action) => {
-      state.rUser = action.payload;
+      state.userReducer = action.payload;
+    },
+    updatePassword: (state, action) => {
+      state.passwordReducer = action.payload;
     },
   },
 });
 
-export const { updateWPM, updateUser } = typeRacerSlice.actions;
+export const { updateWPM, updateUser, updatePassword } = typeRacerSlice.actions;
 
 export default typeRacerSlice.reducer;

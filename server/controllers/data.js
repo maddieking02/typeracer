@@ -36,4 +36,16 @@ module.exports = {
       }
     }, req.body);
   },
+  updateUserData: (req, res) => {
+    console.log('req inside updateUserData', req.body);
+    models.updateUserData((err, data) => {
+      if (err) {
+        console.log('error inside updateUserData', err);
+        res.status(404).send();
+      } else {
+        console.log('success inside updateUserData', data);
+        res.status(200).send(data);
+      }
+    }, req.body);
+  },
 };

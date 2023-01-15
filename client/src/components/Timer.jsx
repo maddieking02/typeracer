@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 import socket from '../socketConfig.js';
 import helperObj from '../helpers.js';
 
 const Timer = ({
-  timer, setTimer, remainingTime, setRemainingTime,
+  timer, setTimer, remainingTime, setRemainingTime, typed, setWpm,
 }) => {
+  // --redux states
+  const { avgWpmReducer, userReducer, passwordReducer } = useSelector((state) => state.typeracer);
+  const dispatch = useDispatch();
 
   // --socket.io implementation
   // useEffect(() => {
@@ -33,7 +38,7 @@ const Timer = ({
   // --react refactor
   const handleStart = () => {
     if (timer === null) {
-      setTimer(5);
+      setTimer(1);
     }
     if (timer > 0) {
       setTimeout(() => setTimer(timer - 1), 1000);
@@ -59,7 +64,39 @@ const Timer = ({
     if (timer === 0 && remainingTime !== null) {
       handleTimeRemaining();
     }
+    if (timer === 0 && remainingTime === 0) {
+      console.log('MASSIVE ENEREGY typed prop', typed, 'CALculation', );
+      setWpm(helperObj.calculateWPM(typed.split('').length));
+      console.log('this is REDUX STATES WOOOOO', userReducer, passwordReducer, 'AVG WPM', avgWpmReducer);
+      // TO POST: need username & password..
+      const newEntryWpm = helperObj.calculateWPM(typed.split('').length);
+
+      const userInfo = {
+        username: userReducer,
+        password: passwordReducer,
+        avgWpm: avgWpmReducer,
+        newEntry: newEntryWpm,
+      };
+      axios.put(`/home/${userReducer}`, userInfo)
+        .then(res => {
+          console.log('success inside axios get user', res.data);
+        })
+        .catch(err => {
+          console.log('err inside axios post user', err);
+        });
+      // console.log('why is my axios not working: ', userReducer, userInfo)
+    }
   }, [remainingTime]);
+
+  // WPM showing after one race;
+
+  // {typeof remainingTime === 'object' || remainingTime === 0 ? helperObj.calculateWPM(typed.split('').length) : 0}
+
+  // STOPPING POINT >>>HERE<<<
+  // console.log('check redux state', rWpm, rUser);
+  // // post to store in database
+  // dispatch(updateWPM(30));
+  // // refactor login GET to update redux state instead of react useState
 
   return (
     <div id="timer-container">

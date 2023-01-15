@@ -6,7 +6,7 @@ const calculateTime = (time) => {
 
 const calculateWPM = (chars) => {
   console.log('inside calculateWPM', chars);
-  const WPM = Math.floor((chars / 5) / 1);
+  const WPM = Math.round((chars / 5) / 1);
   return WPM;
 };
 
