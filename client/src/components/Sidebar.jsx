@@ -1,17 +1,19 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { MdAccountCircle, MdLogout } from 'react-icons/md';
 import { IoMdSettings } from 'react-icons/io';
 
-const Sidebar = ({ isOpen, toggleSidebar, user }) => {
+const Sidebar = ({
+  isOpen, toggleSidebar, user, avgWpm,
+}) => {
   const sidebarClass = isOpen ? 'sidebar open' : 'sidebar';
 
   const navigate = useNavigate();
   const routeChange = (e) => {
     const path = e.target.getAttribute('data-name');
-    navigate(`${path}`, { state: user });
+    navigate(`${path}`, { state: { user, avgWpm } });
   };
 
   return (

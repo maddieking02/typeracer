@@ -1,9 +1,17 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable max-len */
 import React from 'react';
+// import { LineChart, Line } from 'recharts';
+// import recharts, { Line } from 'recharts';
+// import recharts from 'recharts';
 // import {
-//   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+//   Line, LineChart, Area, Pie, Treemap, Cell,
 // } from 'recharts';
-import { useNavigate } from 'react-router-dom';
+import {
+  LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip,
+} from 'recharts/es6';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import user1 from '../assets/typeracer-user1.png';
 
@@ -12,8 +20,22 @@ const Account = () => {
     firstnameReducer, lastnameReducer, emailReducer, avgWpmReducer, userReducer,
   } = useSelector((state) => state.typeracer);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const navHome = () => {
+    navigate('/home', { state: { user: location.state.user, avgWpm: location.state.avgWpm } });
+  };
+
   const dispatch = useDispatch();
   const avgWpmCopy = avgWpmReducer;
+  const data = avgWpmCopy.reduce((acc, wpm, idx) => {
+    const newEntry = {
+      name: `Race ${idx}`,
+      value: wpm,
+    };
+    acc.push(newEntry);
+    return acc;
+  }, []);
 
   const calculateAvgWpm = (arr) => {
     return arr.reduce((acc, num) => {
@@ -22,14 +44,22 @@ const Account = () => {
     }, 0);
   };
 
-  // potential babel issue?
-  // const renderLineChart = () => {
-  //   return (
-  //     <LineChart>
-  //       <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-  //     </LineChart>
-  //   );
-  // };
+  const renderLineChart = (
+    <LineChart
+      width={600}
+      height={300}
+      data={data}
+      margin={{
+        top: 50, right: 20, bottom: 5, left: 0,
+      }}
+    >
+      <Line type="monotone" dataKey="value" stroke="#8884d8" />
+      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+    </LineChart>
+  );
 
   return (
     <div className="bg home-container">
@@ -37,7 +67,7 @@ const Account = () => {
         <div className="layer" />
         <div className="layer" />
         <div className="header-container">
-          <h1 id="header">
+          <h1 id="header" onClick={() => { navHome(); }}>
             typeracer_
           </h1>
           <h1 id="sidebar-container">
@@ -57,18 +87,40 @@ const Account = () => {
           </h1>
         </div>
 
-        <div id="user-account">
-          <img id="account-img" src={user1} alt="" />
-          <h2>{`${firstnameReducer}  ${lastnameReducer}`}</h2>
-          <div>{emailReducer}</div>
-        </div>
+        <div id="user-account-stats-container">
 
-        <div id="user-statistics">
-          <h1>{`${userReducer}'s Statistics`}</h1>
-          {/* {renderLineChart()} */}
-          {/* <LineChart width={400} height={400} data={avgWpmCopy}>
-            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-          </LineChart> */}
+          <div id="user-account">
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '2px solid white',
+              width: 'fit-content',
+              height: 'fit-content',
+              padding: '2em',
+              borderRadius: '50%',
+              opacity: '85%',
+              margin: '0 0 1em 0',
+            }}
+            >
+              <img
+                id="account-img"
+                src={user1}
+                alt=""
+              />
+            </div>
+
+            <h2 id="account-fullname">{`${firstnameReducer}  ${lastnameReducer}`}</h2>
+            <div id="account-email">{emailReducer}</div>
+
+          </div>
+
+          <div id="user-statistics">
+            <h1 id="account-stats">{`${userReducer}'s Statistics`}</h1>
+            {renderLineChart}
+          </div>
+
+
         </div>
 
 

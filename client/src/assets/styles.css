@@ -467,3 +467,57 @@ html, body {
   background-color: rgba(218, 217, 217, 0.2);
   cursor: pointer;
 }
+
+/* --account */
+#user-account-stats-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+  padding: 1em;
+  border: 5px solid rgba(154, 154, 154, 0.6);;
+  margin: 4em 1em 0 1em;
+}
+
+#user-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+  padding: 1em;
+  margin: 1em;
+  /* border: 3px solid pink; */
+}
+
+#account-fullname {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size: 30px;
+}
+
+#account-email {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+}
+
+#user-statistics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+  padding: 1em;
+  margin: 1em;
+  /* border: 3px solid pink; */
+}
+
+#account-stats {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 30px;
+}

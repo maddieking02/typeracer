@@ -31,7 +31,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: ['@babel/plugin-transform-object-assign'],
+            plugins: ['@babel/plugin-transform-object-assign', 'recharts'],
           },
         },
       },
@@ -42,10 +42,6 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
-      },
-      {
-        test: /\.js$/,
-        loader: 'webpack-remove-debug',
       },
     ],
   },

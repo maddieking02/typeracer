@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import logo from '../assets/typeracer-logo.png';
 import Sidebar from './Sidebar.jsx';
-import { HiOutlineDotsVertical } from "react-icons/hi";
-
+// import { HiOutlineDotsVertical } from "react-icons/hi";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +50,7 @@ const Home = () => {
             <h4>WPM {location.state.avgWpm.length === 1 ? 0 : Math.round(calculateAvgWpm(location.state.avgWpm.slice(1)) / (location.state.avgWpm.length - 1))}</h4>
           </div>}
           </h1>
-          <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} user={user} />
+          <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} user={user} avgWpm={location.state.avgWpm} />
         </div>
         <h2>Welcome {user}</h2>
         <img id="home-logo" src={logo} alt="" />
