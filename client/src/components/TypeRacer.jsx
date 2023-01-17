@@ -22,16 +22,10 @@ const TypeRacer = () => {
   // --timer states
   const [timer, setTimer] = useState(null);
   const [remainingTime, setRemainingTime] = useState(null);
-
   // --redux states
   // const { rWpm, rUser } = useSelector((state) => state.typeracer);
   // const dispatch = useDispatch();
-
-  // STOPPING POINT >>>HERE<<<
-  // console.log('check redux state', rWpm, rUser);
-  // post to store in database
-  // dispatch(updateWPM(30));
-  // refactor login GET to update redux state instead of react useState
+  const user = location.state.user === 'guest' ? (location.state.user.charAt(0).toUpperCase() + location.state.user.slice(1)) + JSON.stringify(Math.floor(Math.random() * 100) + 1) : location.state.user;
 
   const navigate = useNavigate();
   const refreshPage = () => {
@@ -41,10 +35,6 @@ const TypeRacer = () => {
   const navHome = () => {
     navigate('/home', { state: { user, avgWpm: location.state.avgWpm } });
   };
-
-  // console.log('i cwant to cry', location);
-
-  const user = location.state.user === 'guest' ? (location.state.user.charAt(0).toUpperCase() + location.state.user.slice(1)) + JSON.stringify(Math.floor(Math.random() * 100) + 1) : location.state.user;
 
   const getRandomChallenge = () => {
     axios.get('/play')
@@ -60,21 +50,14 @@ const TypeRacer = () => {
       });
   };
 
-  // const postResults = () => {
-  //   axios.post('/play')
-  //     .then(res => {
-
-  //     });
-  // };
-
   const resetForm = () => {
     setUserInput('');
   };
 
-  const handleFormChange = (e) => { // takes input and handles spaces
+  const handleFormChange = (e) => {
     e.preventDefault();
     const { value } = e.target;
-    const lastChar = value.charAt(value.length - 1); // last char that user typed out
+    const lastChar = value.charAt(value.length - 1);
     if (lastChar === ' ') {
       // socket.emit('userInput', userInput);
       resetForm();
@@ -169,7 +152,7 @@ const TypeRacer = () => {
         </button>
         <div id="timer-wpm-container">
           <Timer timer={timer} setTimer={setTimer} remainingTime={remainingTime} setRemainingTime={setRemainingTime} typed={typed} setWpm={setWpm} />
-          <div style={{ margin: '0.5em 0 1em 0', fontSize: '22px' }}>
+          <div style={{ margin: '0.5em 0 1em 0', fontSize: '30px' }}>
             WPM
             {' '}
             {typeof remainingTime === 'object' || remainingTime === 0 ? helperObj.calculateWPM(typed.split('').length) : 0}

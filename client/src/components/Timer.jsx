@@ -39,13 +39,13 @@ const Timer = ({
   // --react refactor
   const handleStart = () => {
     if (timer === null) {
-      setTimer(1);
+      setTimer(5);
     }
     if (timer > 0) {
       setTimeout(() => setTimer(timer - 1), 1000);
     }
     if (timer === 0) {
-      setRemainingTime(120);
+      setRemainingTime(30);
     }
   };
 
@@ -97,15 +97,7 @@ const Timer = ({
     }
   }, [remainingTime]);
 
-  // WPM showing after one race;
-
   // {typeof remainingTime === 'object' || remainingTime === 0 ? helperObj.calculateWPM(typed.split('').length) : 0}
-
-  // STOPPING POINT >>>HERE<<<
-  // console.log('check redux state', rWpm, rUser);
-  // // post to store in database
-  // dispatch(updateWPM(30));
-  // // refactor login GET to update redux state instead of react useState
 
   return (
     <div id="timer-container">
