@@ -52,12 +52,18 @@ const Home = () => {
           </h1>
           <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} user={user} avgWpm={location.state.avgWpm} />
         </div>
-        <h2>Welcome {user}</h2>
-        <img id="home-logo" src={logo} alt="" />
-        <h1 id="slogan">A typeracing game for programmers.</h1>
-        <button className="home-btn glow-on-hover" type="button" name="/game/create" onClick={(e) => {routeChange(e)}}>CREATE GAME  ></button>
-        <button className="home-btn glow-on-hover" type="button" name="/game/join" onClick={(e) => {routeChange(e)}}>JOIN GAME  ></button>
-        <button className="home-btn glow-on-hover" type="button" name="/race" onClick={(e) => {routeChange(e)}}>START RACING  ></button>
+
+        <div id="home-content-container">
+          <h2 id="home-welcome">Welcome {user}</h2>
+          <img id="home-logo" src={logo} alt="" />
+          <h1 id="slogan">A typeracing game for programmers.</h1>
+          <div id="home-btn-container">
+            <button className="home-btn glow-on-hover" type="button" name="/game/create" onClick={(e) => {routeChange(e)}}>CREATE GAME  ></button>
+            <button className="home-btn glow-on-hover" type="button" name="/game/join" onClick={(e) => {routeChange(e)}}>JOIN GAME  ></button>
+            <button className="home-btn glow-on-hover" type="button" name="/race" onClick={(e) => {routeChange(e)}}>START RACING  ></button>
+            </div>
+        </div>
+
       </div>
     </div>
   );

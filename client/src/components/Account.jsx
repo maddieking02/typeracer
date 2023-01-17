@@ -30,7 +30,7 @@ const Account = () => {
   const avgWpmCopy = avgWpmReducer;
   const data = avgWpmCopy.reduce((acc, wpm, idx) => {
     const newEntry = {
-      name: `Race ${idx}`,
+      name: `R${idx}`,
       value: wpm,
     };
     acc.push(newEntry);
@@ -116,7 +116,7 @@ const Account = () => {
           </div>
 
           <div id="user-statistics">
-            <h1 id="account-stats">{`${userReducer}'s Statistics`}</h1>
+            <h1 id="account-stats">{`${userReducer}'s Races`}</h1>
             {renderLineChart}
           </div>
 

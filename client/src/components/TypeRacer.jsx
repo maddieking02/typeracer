@@ -60,12 +60,12 @@ const TypeRacer = () => {
       });
   };
 
-  const postResults = () => {
-    axios.post('/play')
-      .then(res => {
+  // const postResults = () => {
+  //   axios.post('/play')
+  //     .then(res => {
 
-      });
-  };
+  //     });
+  // };
 
   const resetForm = () => {
     setUserInput('');
@@ -76,7 +76,7 @@ const TypeRacer = () => {
     const { value } = e.target;
     const lastChar = value.charAt(value.length - 1); // last char that user typed out
     if (lastChar === ' ') {
-      socket.emit('userInput', userInput);
+      // socket.emit('userInput', userInput);
       resetForm();
     } else {
       setUserInput(value);
@@ -86,31 +86,38 @@ const TypeRacer = () => {
   // console.log('userInput', userInput, 'solution', solution.split(' '));
   // match current user input with first word that has not been typed
   // solution = words to be typed
-  const updateToBeTyped = () => {
+  const updateToBeTyped = async () => {
     if (toBeTyped.split(' ')[0] === userInput) {
-      console.log('MATCH', toBeTyped);
+      // console.log('MATCH', toBeTyped);
       const trim = toBeTyped.split(' ').slice(1);
-      console.log('trim', trim);
-      setToBeTyped(trim.join(' '));
+      // console.log('trim', trim);
+      await setToBeTyped(trim.join(' '));
+      const words = `${typed} ${userInput}`; // [typed, ...userInput]
+      await setTyped(words);
     }
   };
 
-  const updateTyped = () => { // func to find typed words
+  const updateTyped = async () => { // func to find typed words
     // compare two strings?
     // console.log('this is solution:::', solution);
+    // console.log('next index toBeTyped:::', solution.indexOf(toBeTyped.split(' ')[0])); // ISSUE
     // console.log('next word toBeTyped:::', toBeTyped.split(' ')[0]);
-    const typedWords = solution.substring(0, solution.indexOf(toBeTyped.split(' ')[0]));
+    // const typedWords = solution.substring(0, solution.indexOf(toBeTyped.split(' ')[0]));
+    // we have a solution prompt
+    // we have words that have yet to be typed
+
     // console.log('FINAL words that have already been typed::: ', typedWords);
-    setTyped(typedWords);
+    // await setTyped(typedWords);
   };
 
   useEffect(() => {
     updateToBeTyped();
   }, [userInput]);
 
-  useEffect(() => {
-    console.log('this should update each time a user submits an input', updateTyped());
-  }, [toBeTyped, typed]);
+  // useEffect(() => {
+  //   updateTyped();
+  //   // console.log('this should update each time a user submits an input', updateTyped());
+  // }, [typed, toBeTyped]);
 
   useEffect(() => {
     getRandomChallenge();
@@ -162,19 +169,19 @@ const TypeRacer = () => {
         </button>
         <div id="timer-wpm-container">
           <Timer timer={timer} setTimer={setTimer} remainingTime={remainingTime} setRemainingTime={setRemainingTime} typed={typed} setWpm={setWpm} />
-          <div style={{ margin: '0.5em 0 1em 0' }}>
+          <div style={{ margin: '0.5em 0 1em 0', fontSize: '22px' }}>
             WPM
             {' '}
             {typeof remainingTime === 'object' || remainingTime === 0 ? helperObj.calculateWPM(typed.split('').length) : 0}
-            {console.log('NEED WPM TO UPDATE HERE PLS: ', wpm)}
+            {/* {console.log('NEED WPM TO UPDATE HERE PLS: ', wpm)} */}
           </div>
         </div>
         <div id="challenge-container">
           {challenge !== undefined ? <div>{`Title: ${challenge}`}</div> : null}
           {language !== undefined ? <div style={{ marginBottom: '1.5em' }}>{`Language: ${language}`}</div> : null}
-          {typed !== undefined && toBeTyped !== undefined ? (
+          {toBeTyped !== undefined ? (
             <div style={{ border: '3px solid rgba(255, 255, 255, 0.35)', padding: '1em' }}>
-              <span style={{ color: 'cyan' }}>{`${typed}`}</span>
+              <span style={{ color: 'cyan' }}>{`${typed} `}</span>
               {`${toBeTyped}`}
             </div>
           ) : null}

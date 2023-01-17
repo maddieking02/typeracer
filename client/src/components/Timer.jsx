@@ -45,7 +45,7 @@ const Timer = ({
       setTimeout(() => setTimer(timer - 1), 1000);
     }
     if (timer === 0) {
-      setRemainingTime(60);
+      setRemainingTime(120);
     }
   };
 
@@ -66,9 +66,9 @@ const Timer = ({
       handleTimeRemaining();
     }
     if (timer === 0 && remainingTime === 0) {
-      console.log('MASSIVE ENEREGY typed prop', typed, 'CALculation', );
+      // console.log('MASSIVE ENEREGY typed prop', typed, 'CALculation', );
       setWpm(helperObj.calculateWPM(typed.split('').length));
-      console.log('this is REDUX STATES WOOOOO', userReducer, passwordReducer, 'AVG WPM', avgWpmReducer);
+      // console.log('this is REDUX STATES WOOOOO', userReducer, passwordReducer, 'AVG WPM', avgWpmReducer);
       // TO POST: need username & password..
       const newEntryWpm = helperObj.calculateWPM(typed.split('').length);
 
