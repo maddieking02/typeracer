@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import logo from '../assets/typeracer-logo.png';
 import Sidebar from './Sidebar.jsx';
 // import { HiOutlineDotsVertical } from "react-icons/hi";
@@ -7,6 +8,9 @@ import Sidebar from './Sidebar.jsx';
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  // --redux states
+  const { avgWpmReducer, userReducer, passwordReducer } = useSelector((state) => state.typeracer);
+  const dispatch = useDispatch();
   console.log('user value', location.state.user, 'avg value', location.state.avgWpm);
 
   const navigate = useNavigate();
@@ -43,11 +47,11 @@ const Home = () => {
 
           <h1 id="sidebar-container">
             {/* <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1> */}
-            {location.state.avgWpm.length === 0 ? <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1> : <div className="header-wpm" onClick={() => {toggleSidebar()}}>
+            {avgWpmReducer.length === 0 ? <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1> : <div className="header-wpm" onClick={() => {toggleSidebar()}}>
             <h1 id="header-wpm-v">
               {user}
             </h1>
-            <h4>WPM {location.state.avgWpm.length === 1 ? 0 : Math.round(calculateAvgWpm(location.state.avgWpm.slice(1)) / (location.state.avgWpm.length - 1))}</h4>
+            <h4>WPM {avgWpmReducer.length === 1 ? 0 : Math.round(calculateAvgWpm(avgWpmReducer.slice(1)) / (avgWpmReducer.length - 1))}</h4>
           </div>}
           </h1>
           <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} user={user} avgWpm={location.state.avgWpm} />
