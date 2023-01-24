@@ -19,8 +19,9 @@ A typeracing game built for programmers.
 <details>
     <summary>View Details</summary>
 
-![alt text]([http://url/to/img.png](https://imgur.com/aAK3RFw))
-![alt text](https://imgur.com/aAK3RFw)
+<!-- ![alt text]([http://url/to/img.png](https://imgur.com/aAK3RFw)) -->
+![alt text](https://imgur.com/aAK3RFw.jpg)
+![alt text](https://imgur.com/aAK3RFw.png)
 	
 	
 </details>
