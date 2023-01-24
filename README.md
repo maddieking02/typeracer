@@ -3,9 +3,9 @@
 A typeracing game built for programmers. -->
 <br>
 <div align="center">
-<!--   <a href="https://speedtyper.dev" target="_blank">
-    <img src="https://www.speedtyper.dev/logo.png" alt="Speedtyper" height="100" width="auto"/>
-  </a> -->
+  <a target="_blank">
+    <img src="./client/src/assets/typeracer-logo.png" alt="typeracer_" height="100" width="auto"/>
+  </a>
   <h1><i>A typeracing game built for programmers.</i></h1>
 </div>
 
@@ -26,7 +26,7 @@ A typeracing game built for programmers. -->
 <details>
     <summary>View Details</summary>
 ![alt text](https://imgur.com/aAK3RFw.jpg)
-	
+
 </details>
 
 ## Home Page
@@ -36,7 +36,7 @@ A typeracing game built for programmers. -->
 <details>
     <summary>View Details</summary>
 ![alt text](https://imgur.com/UrQRnAw.jpg)
-	
+
 </details>
 
 ## Play Typeracer
@@ -46,7 +46,7 @@ A typeracing game built for programmers. -->
 <details>
     <summary>View Details</summary>
 ![alt text](https://imgur.com/dJkv2bM.jpg)
-	
+
 </details>
 
 ## Getting Started

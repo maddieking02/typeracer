@@ -428,6 +428,11 @@ html, body {
   font-size: 32.5px;
 }
 
+/* .progress-bar {
+  height: 250;
+  background-Color: white;
+} */
+
 /* --timer */
 #timer-container {
   display: flex;

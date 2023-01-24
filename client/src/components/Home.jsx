@@ -56,7 +56,7 @@ const Home = () => {
         <div id="home-content-container">
           <h2 id="home-welcome">Welcome {user}</h2>
           <img id="home-logo" src={logo} alt="" />
-          <h1 id="slogan">A typeracing game for programmers.</h1>
+          <h1 id="slogan">A typeracing game built for programmers.</h1>
           <div id="home-btn-container">
             <button className="home-btn glow-on-hover" type="button" name="/game/create" onClick={(e) => {routeChange(e)}}>CREATE GAME  ></button>
             <button className="home-btn glow-on-hover" type="button" name="/game/join" onClick={(e) => {routeChange(e)}}>JOIN GAME  ></button>

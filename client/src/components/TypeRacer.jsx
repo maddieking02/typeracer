@@ -150,12 +150,19 @@ const TypeRacer = () => {
 
         </div>
 
-        <ProgressBar now={Math.round(((typed.length / solution.length) * 100.0))} label={`${Math.round(((typed.length / solution.length) * 100.0))}%`} />
-        {/* {console.log('this is typed', typed)} */}
-
+        <ProgressBar style={{ width: '75%', color: 'grey', backgroundColor: 'pink' }}>
+          <ProgressBar
+            style={{
+              width: `${typed.length === 1 ? 0 : Math.round(((typed.length / solution.length) * 100.0))}%`,
+              color: 'grey',
+              backgroundColor: '#ff7255',
+            }}
+            variant="progress-bar"
+            now={typed.length === 1 ? 0 : Math.round(((typed.length / solution.length) * 100.0))}
+            label={`${typed.length === 1 ? 0 : Math.round(((typed.length / solution.length) * 100.0))}%`}
+          />
+        </ProgressBar>
         {/* {console.log('WHY DOES THIS NOT WORK', typed, Math.round(((typed.length / solution.length) * 100.0)))} */}
-
-
 
         <button type="button" className="btn1" onClick={() => { refreshPage(); }}>
           <FcRefresh style={{ fontSize: '1em', marginRight: '0.5em' }} />
