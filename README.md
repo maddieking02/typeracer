@@ -25,7 +25,7 @@ A typeracing game built for programmers. -->
 
 <details>
     <summary>View Details</summary>
-![alt text](https://imgur.com/aAK3RFw.jpg)
+![alt text](https://github.com/maddieking02/typeracer/blob/master/client/src/assets/typeracer_login.png?raw=true)
 
 </details>
 
@@ -35,7 +35,7 @@ A typeracing game built for programmers. -->
 
 <details>
     <summary>View Details</summary>
-![alt text](https://imgur.com/UrQRnAw.jpg)
+![alt text](https://github.com/maddieking02/typeracer/blob/master/client/src/assets/typeracer_home.png?raw=true)
 
 </details>
 
@@ -45,7 +45,7 @@ A typeracing game built for programmers. -->
 
 <details>
     <summary>View Details</summary>
-![alt text](https://imgur.com/dJkv2bM.jpg)
+![alt text](https://github.com/maddieking02/typeracer/blob/master/client/src/assets/typeracer_race.png?raw=true)
 
 </details>
 
