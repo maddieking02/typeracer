@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { FcRefresh } from 'react-icons/fc';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import Timer from './Timer.jsx';
 import socket from '../socketConfig.js';
 import helperObj from '../helpers.js';
@@ -28,10 +29,6 @@ const TypeRacer = () => {
   const user = location.state.user === 'guest' ? (location.state.user.charAt(0).toUpperCase() + location.state.user.slice(1)) + JSON.stringify(Math.floor(Math.random() * 100) + 1) : location.state.user;
 
   const navigate = useNavigate();
-  const refreshPage = () => {
-    navigate(0);
-    // get request and re-update reducer states
-  };
   const navHome = () => {
     navigate('/home', { state: { user, avgWpm: location.state.avgWpm } });
   };
@@ -48,6 +45,11 @@ const TypeRacer = () => {
       .catch(err => {
         console.log('error retrieving challege', err);
       });
+  };
+
+  const refreshPage = () => {
+    getRandomChallenge();
+    // navigate(0);
   };
 
   const resetForm = () => {
@@ -102,6 +104,9 @@ const TypeRacer = () => {
   //   // console.log('this should update each time a user submits an input', updateTyped());
   // }, [typed, toBeTyped]);
 
+  // useEffect(() => {
+  // }, typed);
+
   useEffect(() => {
     getRandomChallenge();
     textInput.current.focus();
@@ -144,6 +149,12 @@ const TypeRacer = () => {
           </h1>
 
         </div>
+
+        <ProgressBar now={Math.round(((typed.length / solution.length) * 100.0))} label={`${Math.round(((typed.length / solution.length) * 100.0))}%`} />
+        {/* {console.log('this is typed', typed)} */}
+
+        {/* {console.log('WHY DOES THIS NOT WORK', typed, Math.round(((typed.length / solution.length) * 100.0)))} */}
+
 
 
         <button type="button" className="btn1" onClick={() => { refreshPage(); }}>
