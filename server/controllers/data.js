@@ -13,7 +13,7 @@ module.exports = {
     });
   },
   getUserData: (req, res) => {
-    // console.log('req inside getUserData', req.query);
+    console.log('req inside getUserData TEST 1/24', req.query);
     models.getUserData((err, data) => {
       if (err) {
         console.log('error inside getUserData', err);

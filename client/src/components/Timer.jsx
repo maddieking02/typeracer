@@ -39,7 +39,7 @@ const Timer = ({
   // --react refactor
   const handleStart = () => {
     if (timer === null) {
-      setTimer(5);
+      setTimer(1);
     }
     if (timer > 0) {
       setTimeout(() => setTimer(timer - 1), 1000);
@@ -84,11 +84,16 @@ const Timer = ({
       };
       axios.put(`/home/${userReducer}`, userInfo1)
         .then(postres => {
-          console.log('success inside axios get user', postres.data);
-          // axios.get(`/home/${userReducer}`, userInfo2)
-          //   .then(getres => {
-          //     dispatch(updateWPM(getres.data[0].wpm));
-          //   });
+          console.log('success inside axios put user', postres.data);
+          axios.get(`/home/${userReducer}`, { params: userInfo2 })
+            .then(getres => {
+              console.log('wtf is getres', getres.data);
+              dispatch(updateWPM(getres.data[0].wpm));
+              console.log('success inside axios update wpm');
+            })
+            .catch(geterr => {
+              console.log('wtf is geterr', geterr);
+            });
         })
         .catch(err => {
           console.log('err inside axios post user', err);

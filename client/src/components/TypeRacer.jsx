@@ -24,8 +24,8 @@ const TypeRacer = () => {
   const [timer, setTimer] = useState(null);
   const [remainingTime, setRemainingTime] = useState(null);
   // --redux states
-  // const { rWpm, rUser } = useSelector((state) => state.typeracer);
-  // const dispatch = useDispatch();
+  const { avgWpmReducer, userReducer, passwordReducer } = useSelector((state) => state.typeracer);
+  const dispatch = useDispatch();
   const user = location.state.user === 'guest' ? (location.state.user.charAt(0).toUpperCase() + location.state.user.slice(1)) + JSON.stringify(Math.floor(Math.random() * 100) + 1) : location.state.user;
 
   const navigate = useNavigate();
@@ -50,6 +50,11 @@ const TypeRacer = () => {
   const refreshPage = () => {
     getRandomChallenge();
     // navigate(0);
+    setTyped('');
+    setUserInput('');
+    setWpm(0);
+    setTimer(null);
+    setRemainingTime(null);
   };
 
   const resetForm = () => {
@@ -119,6 +124,10 @@ const TypeRacer = () => {
     }, 0);
   };
 
+  useEffect(() => {
+
+  }, [avgWpmReducer]);
+
   return (
     <div className="bg typeracer-container">
       <div className="star-field typeracer-inner-container">
@@ -134,7 +143,7 @@ const TypeRacer = () => {
           </h1> */}
           <h1 id="sidebar-container">
             {/* <h1 id="header" onClick={() => {toggleSidebar()}}>{user}</h1> */}
-            {location.state.avgWpm.length === 0 ? <h1 id="header">{user}</h1> : (
+            {avgWpmReducer.length === 0 ? <h1 id="header">{user}</h1> : (
               <div className="header-wpm">
                 <h1 id="header-wpm-v">
                   {user}
@@ -142,7 +151,7 @@ const TypeRacer = () => {
                 <h4>
                   WPM
                   {' '}
-                  {location.state.avgWpm.length === 1 ? 0 : Math.round(calculateAvgWpm(location.state.avgWpm.slice(1)) / (location.state.avgWpm.length - 1))}
+                  {avgWpmReducer.length === 1 ? 0 : Math.round(calculateAvgWpm(avgWpmReducer.slice(1)) / (avgWpmReducer.length - 1))}
                 </h4>
               </div>
             )}
