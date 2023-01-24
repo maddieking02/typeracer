@@ -23,9 +23,18 @@ A typeracing game built for programmers. -->
 #### Features
 - Authentication for secure sign in
 
+<!-- ![typeracer_login](https://user-images.githubusercontent.com/106297124/214384354-840e0ba2-8522-4cdc-9a12-1a5f26999cc1.png) -->
+
 <details>
-    <summary>View Details</summary>
-![alt text](https://github.com/maddieking02/typeracer/blob/master/client/src/assets/typeracer_login.png?raw=true)
+    <summary>View Gallery</summary>
+
+![typeracer_login](https://user-images.githubusercontent.com/106297124/214384354-840e0ba2-8522-4cdc-9a12-1a5f26999cc1.png)
+
+
+<!-- ![alt text](https://github.com/maddieking02/typeracer/blob/master/client/src/assets/typeracer_login.png?raw=true) -->
+<!-- ![alt text](https://raw.githubusercontent.com/maddieking02/typeracer/blob/master/client/src/assets/typeracer_login.png?raw=true) -->
+<!-- ![fec-overview-readme](https://user-images.githubusercontent.com/106297124/208506471-d7e17ca2-3b99-4c99-9c5b-2db417800de1.png) -->
+<!-- https://raw.githubusercontent.com/<username>/<repo name>/<branch>/<path to file> -->
 
 </details>
 
@@ -34,8 +43,10 @@ A typeracing game built for programmers. -->
 - Options to play typeracer as multiplayer or single player
 
 <details>
-    <summary>View Details</summary>
-![alt text](https://github.com/maddieking02/typeracer/blob/master/client/src/assets/typeracer_home.png?raw=true)
+    <summary>View Gallery</summary>
+    
+![typeracer_home](https://user-images.githubusercontent.com/106297124/214385252-3575d627-37d0-4a73-9830-c16e032e80b1.png)
+
 
 </details>
 
@@ -44,8 +55,10 @@ A typeracing game built for programmers. -->
 - Complete typing various leetcode prompts as fast as possible
 
 <details>
-    <summary>View Details</summary>
-![alt text](https://github.com/maddieking02/typeracer/blob/master/client/src/assets/typeracer_race.png?raw=true)
+    <summary>View Gallery</summary>
+
+![typeracer_race](https://user-images.githubusercontent.com/106297124/214386546-dfb6c2e7-deaa-4a0a-8e33-51e1f3587ce7.png)
+
 
 </details>
 
