@@ -43,36 +43,11 @@ A typeracing game built for programmers. -->
 #### Features
 - Complete typing various leetcode prompts as fast as possible
 
-<!-- ![Questions and Answers](https://user-images.githubusercontent.com/52551319/208265749-aa075175-c951-4d29-bf6d-26f5789e94db.png) -->
-![fec-qa-readme](https://user-images.githubusercontent.com/106297124/208510609-244cfc80-1e29-4884-a6cf-00f5ff014afd.png)
-<!-- ![qaforms](https://user-images.githubusercontent.com/52551319/208266127-5a313e33-37d7-4804-a53f-1541c13b101b.png) -->
-
 <details>
     <summary>View Details</summary>
 ![alt text](https://imgur.com/dJkv2bM.jpg)
 	
 </details>
-
-
-<!-- ## View Account Details
-#### Features
-- Filter reviews by both rating and query
-- Visual represention of the breakdown of product ratings and characteristics
-- A custom form for adding reviews
-
-
-![fec-rr-readme](https://user-images.githubusercontent.com/106297124/208514439-aa206fda-aedb-473b-84d2-7d7ad32e8516.png)
-
-
-<details>
-    <summary>See R&R Form</summary>
-	
-	
-![fec-rr-form-readme](https://user-images.githubusercontent.com/106297124/208514913-6194587f-4a35-4c23-ae6c-43cf25fa522d.png)
-
-	
-</details>
- -->
 
 ## Getting Started
 
