@@ -150,24 +150,6 @@ const TypeRacer = () => {
 
         </div>
 
-        <ProgressBar style={{ width: '75%', color: 'grey', backgroundColor: 'pink' }}>
-          <ProgressBar
-            style={{
-              width: `${typed.length === 1 ? 0 : Math.round(((typed.length / solution.length) * 100.0))}%`,
-              color: 'grey',
-              backgroundColor: '#ff7255',
-            }}
-            variant="progress-bar"
-            now={typed.length === 1 ? 0 : Math.round(((typed.length / solution.length) * 100.0))}
-            label={`${typed.length === 1 ? 0 : Math.round(((typed.length / solution.length) * 100.0))}%`}
-          />
-        </ProgressBar>
-        {/* {console.log('WHY DOES THIS NOT WORK', typed, Math.round(((typed.length / solution.length) * 100.0)))} */}
-
-        <button type="button" className="btn1" onClick={() => { refreshPage(); }}>
-          <FcRefresh style={{ fontSize: '1em', marginRight: '0.5em' }} />
-          New Challenge
-        </button>
         <div id="timer-wpm-container">
           <Timer timer={timer} setTimer={setTimer} remainingTime={remainingTime} setRemainingTime={setRemainingTime} typed={typed} setWpm={setWpm} />
           <div style={{ margin: '0.5em 0 1em 0', fontSize: '30px' }}>
@@ -177,6 +159,48 @@ const TypeRacer = () => {
             {/* {console.log('NEED WPM TO UPDATE HERE PLS: ', wpm)} */}
           </div>
         </div>
+
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '90%',
+        }}
+        >
+          <button type="button" className="btn1" onClick={() => { refreshPage(); }}>
+            <FcRefresh style={{ fontSize: '1em', marginRight: '0.5em' }} />
+            {/* New Challenge */}
+          </button>
+          <ProgressBar
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              width: '75%',
+              color: 'grey',
+              backgroundColor: 'rgba(72, 72, 72, 0.7)',
+              borderRadius: '6px',
+              overflow: 'hidden',
+              transition: 'all 0.10s',
+              willChange: 'transform',
+            }}
+          >
+            <ProgressBar
+              style={{
+                width: `${typed.length === 1 ? 0 : Math.round(((typed.length / solution.length) * 100.0))}%`,
+                color: 'grey',
+                backgroundColor: 'rgba(0, 255, 255, 0.9)',
+                borderRadius: 'inherit',
+                textAlign: 'center',
+              }}
+              variant="progress-bar"
+              now={typed.length === 1 ? 0 : Math.round(((typed.length / solution.length) * 100.0))}
+              label={`${typed.length === 1 ? 0 : Math.round(((typed.length / solution.length) * 100.0))}%`}
+            />
+          </ProgressBar>
+        </div>
+
         <div id="challenge-container">
           {challenge !== undefined ? <div>{`Title: ${challenge}`}</div> : null}
           {language !== undefined ? <div style={{ marginBottom: '1.5em' }}>{`Language: ${language}`}</div> : null}
