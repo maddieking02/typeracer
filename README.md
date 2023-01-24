@@ -1,6 +1,13 @@
-# typeracer_
+<!-- # typeracer_
 
-A typeracing game built for programmers.
+A typeracing game built for programmers. -->
+<br>
+<div align="center">
+<!--   <a href="https://speedtyper.dev" target="_blank">
+    <img src="https://www.speedtyper.dev/logo.png" alt="Speedtyper" height="100" width="auto"/>
+  </a> -->
+  <h1><i>A typeracing game built for programmers.</i></h1>
+</div>
 
 ## Author
 
@@ -18,53 +25,36 @@ A typeracing game built for programmers.
 
 <details>
     <summary>View Details</summary>
-
-<!-- ![alt text]([http://url/to/img.png](https://imgur.com/aAK3RFw)) -->
 ![alt text](https://imgur.com/aAK3RFw.jpg)
-![alt text](https://imgur.com/aAK3RFw.png)
-	
 	
 </details>
 
 ## Home Page
 #### Features
-- A carousel displaying related products
-- A modal comparing product features
-- A list of products saved by the user
-
-<!-- ![Screen Shot 2022-12-17 at 10 25 08 AM](https://user-images.githubusercontent.com/99362878/208256244-13415a39-0f66-4800-80e8-dc473dfce959.png) -->
-![fec-related-products readme](https://user-images.githubusercontent.com/106297124/208510501-ae2786f9-33c6-4861-a5d9-7965c89b22f5.png)
+- Options to play typeracer as multiplayer or single player
 
 <details>
-    <summary>See Comparison Details</summary>
-	
-	
-![Screen Shot 2022-12-17 at 10 26 06 AM](https://user-images.githubusercontent.com/99362878/208256245-965a0942-026c-4fcc-9fb6-d99c5b242f65.png)
-	
+    <summary>View Details</summary>
+![alt text](https://imgur.com/UrQRnAw.jpg)
 	
 </details>
 
-## Race Your Friends
+## Play Typeracer
 #### Features
-- Search functionality to filter questions by title
-- Question and Answers lists with Load More functionality
-- Question and Answer modals for adding to the list
+- Complete typing various leetcode prompts as fast as possible
 
 <!-- ![Questions and Answers](https://user-images.githubusercontent.com/52551319/208265749-aa075175-c951-4d29-bf6d-26f5789e94db.png) -->
 ![fec-qa-readme](https://user-images.githubusercontent.com/106297124/208510609-244cfc80-1e29-4884-a6cf-00f5ff014afd.png)
 <!-- ![qaforms](https://user-images.githubusercontent.com/52551319/208266127-5a313e33-37d7-4804-a53f-1541c13b101b.png) -->
 
 <details>
-    <summary>See Q&A Forms</summary>
-	
-	
-![fec-qa-forms-readme](https://user-images.githubusercontent.com/106297124/208513128-e0b8570a-50a1-45b2-8ce3-60275610ee67.png)
-
+    <summary>View Details</summary>
+![alt text](https://imgur.com/dJkv2bM.jpg)
 	
 </details>
 
 
-## View Account Details
+<!-- ## View Account Details
 #### Features
 - Filter reviews by both rating and query
 - Visual represention of the breakdown of product ratings and characteristics
@@ -82,7 +72,7 @@ A typeracing game built for programmers.
 
 	
 </details>
-
+ -->
 
 ## Getting Started
 
