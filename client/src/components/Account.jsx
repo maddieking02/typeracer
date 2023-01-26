@@ -120,9 +120,7 @@ const Account = () => {
             {renderLineChart}
           </div>
 
-
         </div>
-
 
       </div>
     </div>

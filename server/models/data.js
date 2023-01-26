@@ -2,7 +2,7 @@ const db = require('../db/pgdb.js');
 
 module.exports = {
   getChallenge: (callback, data) => {
-    const count = Math.floor(Math.random() * 10) + 1;
+    const count = Math.floor(Math.random() * 15) + 1;
     console.log('I am inside model GET: ', data);
 
     db.query(`SELECT * FROM challenges WHERE id=${count}`, (err, res) => {
@@ -23,10 +23,14 @@ module.exports = {
       callback(err, res);
     });
   },
-  updateUserData: (callback, { username, password, avgWpm, newEntry }) => {
+  updateUserData: (callback, {
+    username, password, avgWpm, newEntry,
+  }) => {
     console.log('models UPDATE userdata', username, password, avgWpm, newEntry);
 
     avgWpm.push(newEntry);
+
+    console.log(JSON.stringify(avgWpm));
 
     db.query(`UPDATE users SET wpm=ARRAY${JSON.stringify(avgWpm)} WHERE username='${username}' AND password='${password}'`, (err, res) => {
       callback(err, res);

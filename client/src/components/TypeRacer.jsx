@@ -178,7 +178,10 @@ const TypeRacer = () => {
         }}
         >
           <button type="button" className="btn1" onClick={() => { refreshPage(); }}>
-            <FcRefresh style={{ fontSize: '1em', marginRight: '0.5em' }} />
+            <FcRefresh style={{
+              fontSize: '1em',
+            }}
+            />
             {/* New Challenge */}
           </button>
           <ProgressBar
