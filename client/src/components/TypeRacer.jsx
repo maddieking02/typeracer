@@ -151,7 +151,7 @@ const TypeRacer = () => {
                 <h4>
                   WPM
                   {' '}
-                  {avgWpmReducer.length === 1 ? 0 : Math.round(calculateAvgWpm(avgWpmReducer.slice(1)) / (avgWpmReducer.length - 1))}
+                  {avgWpmReducer.length === 1 || avgWpmReducer === 0 ? 0 : Math.round(calculateAvgWpm(avgWpmReducer.slice(1)) / (avgWpmReducer.length - 1))}
                 </h4>
               </div>
             )}
